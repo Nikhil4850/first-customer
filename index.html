@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Niks Jobs - Find your dream career. Premium job portal with thousands of opportunities from top companies worldwide.">
+  <meta name="keywords" content="jobs, careers, hiring, job portal, niks jobs">
+  <title>Niks Jobs | Find Your Dream Career</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/auth-ui.css">
+</head>
+<body data-page="home">
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">N</div>
+        <span>Niks Jobs</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="company.html">Companies</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div class="notif-wrapper">
+            <button class="notif-btn" aria-label="Notifications">🔔<span class="notif-badge">3</span></button>
+            <div class="notif-dropdown">
+              <div class="notif-header">
+                <span>Notifications</span>
+                <button class="mark-all-read" style="background:none;border:none;color:var(--primary-light);cursor:pointer;font-size:0.875rem">Mark all read</button>
+              </div>
+              <div class="notif-list"></div>
+            </div>
+          </div>
+          <button class="btn btn-icon theme-toggle" aria-label="Toggle theme">☀️</button>
+        </div>
+      </nav>
+      <button class="menu-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="company.html">Companies</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="login.html">Log In</a>
+    <a href="register.html">Sign Up</a>
+  </nav>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-grid-pattern"></div>
+      <div class="container hero-content">
+        <div class="hero-text reveal">
+          <h1>Find Your <span class="highlight">Dream Career</span> Today</h1>
+          <p>Discover thousands of opportunities from top companies worldwide. Your next career move starts here at Niks Jobs.</p>
+          <div class="hero-cta">
+            <a href="jobs.html" class="btn btn-primary btn-lg">Browse Jobs</a>
+            <a href="register.html" class="btn btn-outline btn-lg">Post a Job</a>
+          </div>
+          <div class="hero-stats-inline">
+            <div class="stat"><strong class="counter" data-target="28400" data-suffix="+">0</strong><span>Active Jobs</span></div>
+            <div class="stat"><strong class="counter" data-target="4200" data-suffix="+">0</strong><span>Companies</span></div>
+            <div class="stat"><strong class="counter" data-target="890000" data-suffix="+">0</strong><span>Job Seekers</span></div>
+          </div>
+          <form class="search-hero" id="hero-search-form">
+            <div class="search-field">
+              <span>🔍</span>
+              <input type="text" id="hero-keyword" placeholder="Job title, keywords..." aria-label="Search keywords">
+            </div>
+            <div class="search-field">
+              <span>📍</span>
+              <input type="text" id="hero-location" placeholder="City, state, or remote" aria-label="Location">
+            </div>
+            <div class="search-field">
+              <span>📂</span>
+              <select aria-label="Category" id="hero-category">
+                <option value="">All Categories</option>
+                <option value="tech">Technology</option>
+                <option value="design">Design</option>
+                <option value="marketing">Marketing</option>
+                <option value="data">Data Science</option>
+                <option value="remote">Remote</option>
+                <option value="internship">Internships</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Search Jobs</button>
+          </form>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="hero-illustration">
+            <span style="font-size:6rem">💼</span>
+            <div class="hero-float-card">🎯 98% Match Rate</div>
+            <div class="hero-float-card">⚡ Fast Apply</div>
+            <div class="hero-float-card">🏆 Top Companies</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Popular Categories</h2>
+          <p>Explore jobs across diverse industries and find your perfect fit</p>
+        </div>
+        <div class="categories-grid" id="categories-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--bg-secondary)">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Featured Companies</h2>
+          <p>Join industry leaders who are hiring on Niks Jobs</p>
+        </div>
+        <div class="companies-scroll" id="featured-companies"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Latest Jobs</h2>
+          <p>Fresh opportunities posted this week</p>
+        </div>
+        <div class="jobs-grid grid-view" id="latest-jobs"></div>
+        <div style="text-align:center;margin-top:2rem">
+          <a href="jobs.html" class="btn btn-primary">View All Jobs</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--bg-secondary)">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Top Hiring Locations</h2>
+          <p>Explore opportunities in the world's fastest-growing job markets</p>
+        </div>
+        <div class="locations-grid" id="locations-grid"></div>
+      </div>
+    </section>
+
+    <section class="section stats-section">
+      <div class="container">
+        <div class="stats-row reveal">
+          <div><div class="number counter" data-target="28400" data-suffix="+">0</div><p>Jobs Posted</p></div>
+          <div><div class="number counter" data-target="4200" data-suffix="+">0</div><p>Companies</p></div>
+          <div><div class="number counter" data-target="96" data-suffix="%">0</div><p>Success Rate</p></div>
+          <div><div class="number counter" data-target="62" data-suffix="+">0</div><p>Countries</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Career Resources</h2>
+          <p>Expert guides to help you land your next role faster</p>
+        </div>
+        <div class="career-tips-grid" id="career-tips-grid"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>What Our Users Say</h2>
+          <p>Real stories from professionals who found success</p>
+        </div>
+        <div class="testimonials-grid" id="testimonials-grid"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="newsletter reveal">
+          <h2>Stay Updated</h2>
+          <p>Get the latest job alerts and career tips delivered to your inbox</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email for newsletter">
+            <button type="submit" class="btn btn-lg">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><div class="logo-icon">N</div><span>Niks Jobs</span></a>
+          <p>Your trusted partner in finding the perfect career opportunity. Connecting talent with opportunity since 2024.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">📷</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>For Job Seekers</h4>
+          <ul>
+            <li><a href="jobs.html">Browse Jobs</a></li>
+            <li><a href="dashboard.html">My Dashboard</a></li>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="register.html">Create Account</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>For Employers</h4>
+          <ul>
+            <li><a href="employer-dashboard.html">Post a Job</a></li>
+            <li><a href="company.html">Company Profiles</a></li>
+            <li><a href="register.html">Employer Sign Up</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Niks Jobs. All rights reserved.</p>
+        <p>Built with passion for job seekers worldwide</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-widgets">
+    <div style="position:relative">
+      <div class="widget-panel" id="chat-panel">
+        <div class="widget-header">💬 Messages <button class="widget-close" style="background:none;border:none;color:white;cursor:pointer;font-size:1.25rem">×</button></div>
+        <div class="widget-body" id="chat-messages">
+          <p style="font-size:0.875rem;color:var(--text-muted)">Chat with recruiters in real-time</p>
+        </div>
+        <div class="widget-footer">
+          <input type="text" id="chat-input" placeholder="Type a message...">
+          <button class="btn btn-primary btn-sm" id="chat-send">Send</button>
+        </div>
+      </div>
+      <button class="widget-btn chat" id="chat-toggle" aria-label="Open chat">💬</button>
+    </div>
+    <div style="position:relative">
+      <div class="widget-panel" id="ai-panel">
+        <div class="widget-header">🤖 AI Career Assistant <button class="widget-close" style="background:none;border:none;color:white;cursor:pointer;font-size:1.25rem">×</button></div>
+        <div class="widget-body" id="ai-messages">
+          <p>Hi! I'm your AI career assistant. Ask me about jobs, resume tips, or interview prep!</p>
+        </div>
+        <div class="widget-footer">
+          <input type="text" id="ai-input" placeholder="Ask anything...">
+          <button class="btn btn-primary btn-sm" id="ai-send">Ask</button>
+        </div>
+      </div>
+      <button class="widget-btn ai" id="ai-toggle" aria-label="AI assistant">🤖</button>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/jobs.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

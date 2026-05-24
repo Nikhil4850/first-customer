@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile | Niks Jobs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/auth-ui.css">
+</head>
+<body data-page="profile" data-protected="true">
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><div class="logo-icon">N</div><span>Niks Jobs</span></a>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="profile.html" class="active">Profile</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn btn-icon theme-toggle" aria-label="Toggle theme">☀️</button>
+        </div>
+      </nav>
+      <button class="menu-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:calc(var(--header-height) + 2rem);padding-bottom:4rem">
+    <div class="profile-header card card-glass reveal">
+      <div class="profile-avatar-wrap">
+        <div class="avatar avatar-lg" id="profile-avatar">AJ</div>
+        <button class="btn btn-primary btn-sm profile-edit-btn edit-section-btn">📷</button>
+      </div>
+      <div style="flex:1">
+        <h1 id="profile-name">Alex Johnson</h1>
+        <p id="profile-title" style="color:var(--primary-light);font-size:1.125rem;margin:0.25rem 0">Senior Frontend Developer</p>
+        <p id="profile-location">📍 San Francisco, CA</p>
+        <p id="profile-bio" style="margin-top:1rem;max-width:600px"></p>
+        <div style="display:flex;gap:0.75rem;margin-top:1rem;flex-wrap:wrap">
+          <a href="#" class="btn btn-ghost btn-sm">GitHub</a>
+          <a href="#" class="btn btn-ghost btn-sm">LinkedIn</a>
+          <a href="#" class="btn btn-ghost btn-sm">Portfolio</a>
+        </div>
+      </div>
+      <button class="btn btn-primary edit-section-btn">Edit Profile</button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:2rem;margin-top:2rem">
+      <div>
+        <section class="profile-section card reveal">
+          <div class="profile-section-header">
+            <h2>Skills</h2>
+            <button class="btn btn-ghost btn-sm edit-section-btn">Edit</button>
+          </div>
+          <div class="skills-list" id="profile-skills"></div>
+        </section>
+
+        <section class="profile-section card reveal" style="margin-top:1.5rem">
+          <div class="profile-section-header">
+            <h2>Experience</h2>
+            <button class="btn btn-ghost btn-sm edit-section-btn">+ Add</button>
+          </div>
+          <div id="profile-experience"></div>
+        </section>
+
+        <section class="profile-section card reveal" style="margin-top:1.5rem">
+          <div class="profile-section-header">
+            <h2>Education</h2>
+            <button class="btn btn-ghost btn-sm edit-section-btn">+ Add</button>
+          </div>
+          <div id="profile-education"></div>
+        </section>
+      </div>
+
+      <div>
+        <section class="card reveal">
+          <h3 style="margin-bottom:1rem">Resume</h3>
+          <div class="upload-zone" id="resume-upload-profile">
+            <input type="file" accept=".pdf,.doc,.docx">
+            <p>📄 Alex_Johnson_Resume.pdf</p>
+            <p style="font-size:0.875rem;color:var(--text-muted);margin-top:0.5rem">Click to update</p>
+          </div>
+          <button class="btn btn-outline btn-sm" style="width:100%;margin-top:1rem">Preview Resume</button>
+        </section>
+
+        <section class="card reveal" style="margin-top:1.5rem">
+          <h3 style="margin-bottom:1rem">Portfolio Links</h3>
+          <ul style="display:flex;flex-direction:column;gap:0.75rem">
+            <li><a href="#" style="color:var(--primary-light)">🔗 github.com/alexjohnson</a></li>
+            <li><a href="#" style="color:var(--primary-light)">🔗 linkedin.com/in/alexjohnson</a></li>
+            <li><a href="#" style="color:var(--primary-light)">🔗 portfolio.dev/alex</a></li>
+          </ul>
+        </section>
+
+        <section class="card reveal" style="margin-top:1.5rem">
+          <h3 style="margin-bottom:1rem">Social Links</h3>
+          <div class="footer-social">
+            <a href="#">in</a>
+            <a href="#">𝕏</a>
+            <a href="#">📷</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/jobs.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employer Dashboard | Niks Jobs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/auth-ui.css">
+</head>
+<body data-page="employer" data-protected="true">
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><div class="logo-icon">N</div><span>Niks Jobs</span></a>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="employer-dashboard.html" class="active">Employer</a></li>
+          <li><a href="company.html">Company</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn btn-icon theme-toggle" aria-label="Toggle theme">☀️</button>
+        </div>
+      </nav>
+      <button class="menu-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <div style="padding:1rem 0 1.5rem;border-bottom:1px solid var(--border);margin-bottom:1rem">
+        <div class="avatar avatar-lg" style="background:#4285F4;margin-bottom:0.75rem">G</div>
+        <h3 style="font-size:1rem">Google Inc.</h3>
+        <p style="font-size:0.875rem">Employer Account</p>
+      </div>
+      <nav class="sidebar-nav" id="employer-tabs">
+        <a href="#" class="active" data-tab="overview"><span class="icon">📊</span> Overview</a>
+        <a href="#" data-tab="jobs"><span class="icon">💼</span> Manage Jobs</a>
+        <a href="#" data-tab="post"><span class="icon">➕</span> Post Job</a>
+        <a href="#" data-tab="applicants"><span class="icon">👥</span> Applicants</a>
+        <a href="#" data-tab="analytics"><span class="icon">📈</span> Analytics</a>
+        <a href="company.html?id=c1"><span class="icon">🏢</span> Company Profile</a>
+        <a href="#" class="logout-btn" data-logout style="margin-top:1rem;color:var(--danger)"><span class="icon">🚪</span> Log Out</a>
+      </nav>
+    </aside>
+
+    <main class="dashboard-main">
+      <div class="admin-banner">🏢 Employer Dashboard — Manage your job postings and applicants</div>
+
+      <div id="employer-overview" class="employer-panel">
+        <div class="dashboard-header">
+          <h1>Employer Overview</h1>
+          <p>Monitor your hiring pipeline and job performance</p>
+        </div>
+        <div class="stats-grid">
+          <div class="card stat-card"><div class="stat-value counter" data-target="24">0</div><div class="stat-label">Active Jobs</div></div>
+          <div class="card stat-card"><div class="stat-value counter" data-target="412">0</div><div class="stat-label">Total Applicants</div></div>
+          <div class="card stat-card"><div class="stat-value counter" data-target="28">0</div><div class="stat-label">Interviews Scheduled</div></div>
+          <div class="card stat-card"><div class="stat-value counter" data-target="92" data-suffix="%">0</div><div class="stat-label">Response Rate</div></div>
+        </div>
+        <div class="dashboard-grid" style="margin-top:2rem">
+          <div class="card">
+            <h3 style="margin-bottom:1rem">Recent Applicants</h3>
+            <div id="applicants-preview"></div>
+          </div>
+          <div class="card">
+            <h3 style="margin-bottom:1rem">Job Performance</h3>
+            <div style="display:flex;flex-direction:column;gap:1rem">
+              <div><div style="display:flex;justify-content:space-between;margin-bottom:0.25rem"><span>Senior Frontend Dev</span><span>234 views</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:85%"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;margin-bottom:0.25rem"><span>ML Engineer</span><span>189 views</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:65%"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;margin-bottom:0.25rem"><span>DevOps Engineer</span><span>156 views</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:45%"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="employer-jobs" class="employer-panel" style="display:none">
+        <div class="dashboard-header">
+          <h1>Manage Jobs</h1>
+          <p>Edit, delete, or view performance of your job listings</p>
+        </div>
+        <div id="employer-jobs-list"></div>
+      </div>
+
+      <div id="employer-post" class="employer-panel" style="display:none">
+        <div class="dashboard-header">
+          <h1>Post a New Job</h1>
+          <p>Fill in the details to publish a new job listing</p>
+        </div>
+        <div class="card" style="max-width:700px">
+          <form id="post-job-form">
+            <div class="form-group">
+              <label for="job-title">Job Title</label>
+              <input type="text" id="job-title" class="form-control" required placeholder="e.g. Senior Software Engineer">
+            </div>
+            <div class="form-group">
+              <label for="job-location">Location</label>
+              <input type="text" id="job-location" class="form-control" required placeholder="City, State or Remote">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+              <div class="form-group">
+                <label for="job-salary">Salary Range</label>
+                <input type="text" id="job-salary" class="form-control" placeholder="$100k - $150k">
+              </div>
+              <div class="form-group">
+                <label for="job-type">Job Type</label>
+                <select id="job-type" class="form-control">
+                  <option>Full-time</option>
+                  <option>Part-time</option>
+                  <option>Contract</option>
+                  <option>Internship</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="job-description">Description</label>
+              <textarea id="job-description" class="form-control" rows="6" required placeholder="Describe the role, responsibilities, and requirements..."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="job-skills">Required Skills (comma separated)</label>
+              <input type="text" id="job-skills" class="form-control" placeholder="React, TypeScript, Node.js">
+            </div>
+            <button type="submit" class="btn btn-primary">Publish Job</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="employer-applicants" class="employer-panel" style="display:none">
+        <div class="dashboard-header">
+          <h1>Applicants</h1>
+          <p>Review and manage candidate applications</p>
+        </div>
+        <div id="applicants-list"></div>
+      </div>
+
+      <div id="employer-analytics" class="employer-panel" style="display:none">
+        <div class="dashboard-header">
+          <h1>Job Analytics</h1>
+          <p>Insights into your job posting performance</p>
+        </div>
+        <div class="stats-grid">
+          <div class="card stat-card"><div class="stat-value">12.4K</div><div class="stat-label">Total Views (30d)</div></div>
+          <div class="card stat-card"><div class="stat-value">8.2%</div><div class="stat-label">Apply Rate</div></div>
+          <div class="card stat-card"><div class="stat-value">4.2d</div><div class="stat-label">Avg. Time to Apply</div></div>
+          <div class="card stat-card"><div class="stat-value">67%</div><div class="stat-label">Qualified Rate</div></div>
+        </div>
+        <div class="card" style="margin-top:2rem;padding:2rem;text-align:center;color:var(--text-muted)">
+          <p style="font-size:3rem;margin-bottom:1rem">📊</p>
+          <p>Analytics charts would render here with a charting library in production.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/jobs.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const preview = document.getElementById('applicants-preview');
+      if (preview) {
+        preview.innerHTML = NiksJobsData.applicants.slice(0, 6).map(a => `
+          <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--border)">
+            <div class="avatar avatar-sm">${a.avatar}</div>
+            <div><strong>${a.name}</strong><p style="font-size:0.75rem;color:var(--text-muted)">${a.role}</p></div>
+            <span class="badge" style="margin-left:auto">${a.status}</span>
+          </div>
+        `).join('');
+      }
+    });
+  </script>
+</body>
+</html>

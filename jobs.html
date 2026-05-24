@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse thousands of job listings on Niks Jobs. Filter by location, salary, experience, and more.">
+  <title>Browse Jobs | Niks Jobs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/auth-ui.css">
+</head>
+<body data-page="jobs">
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><div class="logo-icon">N</div><span>Niks Jobs</span></a>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="jobs.html" class="active">Jobs</a></li>
+          <li><a href="company.html">Companies</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div class="notif-wrapper">
+            <button class="notif-btn" aria-label="Notifications">🔔<span class="notif-badge">3</span></button>
+            <div class="notif-dropdown">
+              <div class="notif-header"><span>Notifications</span><button class="mark-all-read" style="background:none;border:none;color:var(--primary-light);cursor:pointer;font-size:0.875rem">Mark all read</button></div>
+              <div class="notif-list"></div>
+            </div>
+          </div>
+          <button class="btn btn-icon theme-toggle" aria-label="Toggle theme">☀️</button>
+        </div>
+      </nav>
+      <button class="menu-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a><a href="jobs.html">Jobs</a><a href="company.html">Companies</a>
+    <a href="dashboard.html">Dashboard</a><a href="login.html">Log In</a><a href="register.html">Sign Up</a>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <h1>Find Your Next Opportunity</h1>
+      <p id="results-count">Loading jobs...</p>
+    </div>
+  </div>
+
+  <div class="container jobs-layout">
+    <aside class="filters-sidebar">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h3>Filters</h3>
+        <button class="btn btn-ghost btn-sm" id="toggle-filters" style="display:none">☰</button>
+      </div>
+      <div id="filter-options"></div>
+    </aside>
+
+    <div class="jobs-main">
+      <div class="jobs-toolbar">
+        <div class="jobs-search-bar">
+          <input type="search" id="job-search" placeholder="Search jobs, companies, skills..." aria-label="Search jobs">
+        </div>
+        <select id="sort-jobs" class="form-control" style="width:auto" aria-label="Sort jobs">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="salary-high">Salary: High to Low</option>
+          <option value="salary-low">Salary: Low to High</option>
+        </select>
+        <div class="jobs-view-toggle">
+          <button class="active" data-view="grid" aria-label="Grid view">▦</button>
+          <button data-view="list" aria-label="List view">☰</button>
+        </div>
+        <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;white-space:nowrap">
+          <input type="checkbox" id="infinite-scroll-toggle"> Infinite scroll
+        </label>
+      </div>
+
+      <div class="jobs-grid grid-view" id="jobs-container">
+        <div class="loading-spinner" style="margin:2rem auto"></div>
+      </div>
+
+      <div id="pagination-wrap" style="display:flex;flex-direction:column;align-items:center;gap:1rem">
+        <div class="pagination" id="pagination"></div>
+        <button class="btn btn-outline" id="load-more">Load More Jobs</button>
+      </div>
+
+      <div class="recommendations">
+        <h3>Recommended for You</h3>
+        <div class="jobs-grid grid-view" id="job-recommendations"></div>
+      </div>
+
+      <div class="recommendations" style="margin-top:2rem">
+        <h3>Recently Viewed</h3>
+        <div class="recently-viewed" id="recently-viewed"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding:0">
+        <p>&copy; 2026 Niks Jobs. All rights reserved.</p>
+        <a href="index.html">Back to Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-widgets">
+    <div style="position:relative">
+      <div class="widget-panel" id="ai-panel">
+        <div class="widget-header">🤖 AI Career Assistant <button class="widget-close" style="background:none;border:none;color:white;cursor:pointer">×</button></div>
+        <div class="widget-body" id="ai-messages"><p>Ask me to help find jobs matching your skills!</p></div>
+        <div class="widget-footer"><input type="text" id="ai-input" placeholder="Ask anything..."><button class="btn btn-primary btn-sm" id="ai-send">Ask</button></div>
+      </div>
+      <button class="widget-btn ai" id="ai-toggle" aria-label="AI assistant">🤖</button>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/jobs.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

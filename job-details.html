@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Details | Niks Jobs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/auth-ui.css">
+</head>
+<body data-page="job-detail">
+  <div class="reading-progress"></div>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><div class="logo-icon">N</div><span>Niks Jobs</span></a>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="jobs.html" class="active">Jobs</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div class="notif-wrapper">
+            <button class="notif-btn" aria-label="Notifications">🔔<span class="notif-badge">3</span></button>
+            <div class="notif-dropdown">
+              <div class="notif-header"><span>Notifications</span><button class="mark-all-read" style="background:none;border:none;color:var(--primary-light);cursor:pointer;font-size:0.875rem">Mark all read</button></div>
+              <div class="notif-list"></div>
+            </div>
+          </div>
+          <button class="btn btn-icon theme-toggle" aria-label="Toggle theme">☀️</button>
+          <button type="button" class="btn btn-primary btn-sm" id="header-apply-btn">Apply</button>
+        </div>
+      </nav>
+      <button class="menu-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main class="container job-detail-page">
+    <div class="job-detail-grid">
+      <div class="job-detail-main">
+        <div id="job-detail-content">
+          <div class="skeleton" style="height:200px;margin-bottom:1.5rem"></div>
+          <div class="skeleton" style="height:400px"></div>
+        </div>
+      </div>
+      <aside id="job-detail-sidebar"></aside>
+    </div>
+
+    <section style="margin-top:3rem">
+      <h2 style="margin-bottom:1.5rem">Similar Jobs</h2>
+      <div class="jobs-grid grid-view similar-jobs" id="similar-jobs"></div>
+    </section>
+  </main>
+
+  <div class="sticky-apply"></div>
+
+  <div class="modal-overlay" id="apply-modal">
+    <div class="modal">
+      <h2 style="margin-bottom:1rem">Apply for this Position</h2>
+      <form id="apply-form">
+        <div class="form-group">
+          <label for="apply-name">Full Name</label>
+          <input type="text" id="apply-name" class="form-control" required value="Alex Johnson">
+        </div>
+        <div class="form-group">
+          <label for="apply-email">Email</label>
+          <input type="email" id="apply-email" class="form-control" required value="alex.johnson@email.com">
+        </div>
+        <div class="form-group">
+          <label for="apply-phone">Phone</label>
+          <input type="tel" id="apply-phone" class="form-control" required placeholder="+1 (555) 000-0000">
+        </div>
+        <div class="form-group">
+          <label for="apply-cover">Cover Letter</label>
+          <textarea id="apply-cover" class="form-control" rows="4" placeholder="Tell us why you're a great fit..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Resume</label>
+          <div class="upload-zone" onclick="document.getElementById('apply-resume').click()">
+            <input type="file" id="apply-resume" accept=".pdf,.doc,.docx">
+            <p>📄 Drop resume here or click to upload</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.75rem;margin-top:1.5rem">
+          <button type="submit" class="btn btn-primary" style="flex:1">Submit Application</button>
+          <button type="button" class="btn btn-outline modal-close">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="interview-modal">
+    <div class="modal" style="max-width:560px">
+      <h2 style="margin-bottom:1rem">Schedule Interview</h2>
+      <div class="scheduler-grid">
+        <div class="form-group">
+          <label>Select Date</label>
+          <input type="date" class="form-control" value="2026-05-28">
+        </div>
+        <div class="form-group">
+          <label>Interview Type</label>
+          <select class="form-control">
+            <option>Video Call</option>
+            <option>Phone</option>
+            <option>In Person</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" style="margin-top:1rem">
+        <label>Available Time Slots</label>
+        <div class="time-slots">
+          <div class="time-slot">9:00 AM</div>
+          <div class="time-slot">10:00 AM</div>
+          <div class="time-slot selected">2:00 PM</div>
+          <div class="time-slot">3:00 PM</div>
+          <div class="time-slot">4:00 PM</div>
+          <div class="time-slot">5:00 PM</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" style="width:100%;margin-top:1rem" id="confirm-interview">Confirm Interview</button>
+      <button class="btn btn-outline modal-close" style="width:100%;margin-top:0.5rem">Cancel</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding:0">
+        <p>&copy; 2026 Niks Jobs</p>
+        <button class="btn btn-ghost btn-sm" id="schedule-interview">📅 Schedule Interview</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/jobs.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

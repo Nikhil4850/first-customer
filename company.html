@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Profile | Niks Jobs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="company">
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><div class="logo-icon">N</div><span>Niks Jobs</span></a>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="company.html" class="active">Companies</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn btn-icon theme-toggle" aria-label="Toggle theme">☀️</button>
+        </div>
+      </nav>
+      <button class="menu-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <section class="company-hero">
+    <div class="container company-hero-content reveal">
+      <div class="avatar company-logo-large" id="company-logo">G</div>
+      <div>
+        <h1 id="company-name">Google</h1>
+        <p id="company-industry" style="color:var(--primary-light);margin:0.25rem 0">Technology</p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;font-size:0.9375rem;color:var(--text-secondary)">
+          <span>👥 <span id="company-employees">150,000+</span> employees</span>
+          <span>📍 <span id="company-location">Mountain View, CA</span></span>
+          <span>🌐 <a href="#" style="color:var(--accent)">Website</a></span>
+        </div>
+        <div style="margin-top:1.5rem;display:flex;gap:0.75rem">
+          <a href="jobs.html" class="btn btn-primary">View Open Jobs</a>
+          <button class="btn btn-outline">Follow Company</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" style="padding:3rem 1.5rem">
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:2rem">
+      <div>
+        <section class="card reveal" style="margin-bottom:2rem">
+          <h2 style="margin-bottom:1rem">About</h2>
+          <p id="company-about"></p>
+        </section>
+
+        <section class="reveal" style="margin-bottom:2rem">
+          <h2 style="margin-bottom:1rem">Company Culture</h2>
+          <div class="company-gallery">
+            <div class="gallery-item">Office Space</div>
+            <div class="gallery-item">Team Events</div>
+            <div class="gallery-item">Work Culture</div>
+            <div class="gallery-item">Benefits</div>
+          </div>
+        </section>
+
+        <section class="reveal">
+          <h2 style="margin-bottom:1.5rem">Open Positions</h2>
+          <div class="jobs-grid grid-view" id="company-jobs"></div>
+        </section>
+      </div>
+
+      <aside>
+        <div class="card reveal" style="margin-bottom:1.5rem">
+          <h3 style="margin-bottom:1rem">Quick Info</h3>
+          <ul style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.9375rem">
+            <li><strong>Industry:</strong> <span id="company-industry-side">Technology</span></li>
+            <li><strong>Size:</strong> <span id="company-size">Enterprise</span></li>
+            <li><strong>Founded:</strong> 1998</li>
+            <li><strong>Headquarters:</strong> Mountain View, CA</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3 style="margin-bottom:1rem">Connect</h3>
+          <div class="footer-social">
+            <a href="#">in</a>
+            <a href="#">𝕏</a>
+            <a href="#">f</a>
+          </div>
+        </div>
+        <div class="card reveal" style="margin-top:1.5rem">
+          <h3 style="margin-bottom:1rem">Featured Companies</h3>
+          <div style="display:flex;flex-direction:column;gap:0.75rem">
+            <a href="company.html?id=c2" style="display:flex;align-items:center;gap:0.75rem;padding:0.5rem;border-radius:var(--radius-sm);transition:background 0.2s" onmouseover="this.style.background='var(--bg-tertiary)'" onmouseout="this.style.background='transparent'">
+              <div class="avatar avatar-sm" style="background:#00A4EF20;color:#00A4EF">M</div> Microsoft
+            </a>
+            <a href="company.html?id=c3" style="display:flex;align-items:center;gap:0.75rem;padding:0.5rem" onmouseover="this.style.background='var(--bg-tertiary)'" onmouseout="this.style.background='transparent'">
+              <div class="avatar avatar-sm" style="background:#FF990020;color:#FF9900">A</div> Amazon
+            </a>
+            <a href="company.html?id=c4" style="display:flex;align-items:center;gap:0.75rem;padding:0.5rem" onmouseover="this.style.background='var(--bg-tertiary)'" onmouseout="this.style.background='transparent'">
+              <div class="avatar avatar-sm" style="background:#0668E120;color:#0668E1">F</div> Meta
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding:0">
+        <p>&copy; 2026 Niks Jobs</p>
+        <a href="index.html">Back to Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/jobs.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
