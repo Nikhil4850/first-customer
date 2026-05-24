@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Niks Jobs — Premium Job Portal
 
 A modern, full-featured job portal built with **HTML5**, **CSS3**, and **Vanilla JavaScript**.
@@ -95,3 +96,6 @@ Chrome, Firefox, Safari, Edge (latest versions)
 ---
 
 © 2026 Niks Jobs
+=======
+# Job-Portal
+>>>>>>> 3d7454039073bbfc46a3f641753241fa63d6b8ca
