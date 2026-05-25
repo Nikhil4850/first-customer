@@ -94,20 +94,42 @@ const Utils = {
   },
 
   initScrollReveal() {
-    const reveals = Utils.$$('.reveal');
+    const reveals = Utils.$$('.reveal:not([data-reveal-init])');
+    if (!reveals.length) return;
+
+    const show = (el) => el.classList.add('visible');
+
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            show(entry.target);
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-      reveals.forEach(el => observer.observe(el));
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+      reveals.forEach(el => {
+        el.dataset.revealInit = 'true';
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          show(el);
+        } else {
+          observer.observe(el);
+        }
+      });
     } else {
-      reveals.forEach(el => el.classList.add('visible'));
+      reveals.forEach(el => {
+        el.dataset.revealInit = 'true';
+        show(el);
+      });
     }
+  },
+
+  showRevealsIn(container) {
+    if (!container) return;
+    container.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    this.initScrollReveal();
   },
 
   initRippleButtons() {

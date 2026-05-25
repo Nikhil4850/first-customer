@@ -9,16 +9,24 @@ const NiksJobsData = {
   },
 
   topLocations: [
-    { city: 'San Francisco', country: 'USA', jobs: 2840, icon: '🌉' },
-    { city: 'New York', country: 'USA', jobs: 3120, icon: '🗽' },
-    { city: 'London', country: 'UK', jobs: 1980, icon: '🇬🇧' },
-    { city: 'Bangalore', country: 'India', jobs: 2450, icon: '🇮🇳' },
-    { city: 'Berlin', country: 'Germany', jobs: 1120, icon: '🇩🇪' },
-    { city: 'Toronto', country: 'Canada', jobs: 980, icon: '🇨🇦' },
-    { city: 'Singapore', country: 'Singapore', jobs: 870, icon: '🇸🇬' },
-    { city: 'Sydney', country: 'Australia', jobs: 760, icon: '🇦🇺' },
-    { city: 'Remote', country: 'Worldwide', jobs: 5200, icon: '🌍' },
-    { city: 'Dubai', country: 'UAE', jobs: 640, icon: '🇦🇪' }
+    { city: 'San Francisco', country: 'USA', jobs: 2840, icon: '🌉', avgSalary: '$165k', growth: '+18%', highlight: 'Tech & AI hub', companies: 420, remote: 34 },
+    { city: 'New York', country: 'USA', jobs: 3120, icon: '🗽', avgSalary: '$158k', growth: '+14%', highlight: 'Finance & media', companies: 510, remote: 28 },
+    { city: 'London', country: 'UK', jobs: 1980, icon: '🇬🇧', avgSalary: '£72k', growth: '+12%', highlight: 'Fintech & consulting', companies: 380, remote: 31 },
+    { city: 'Bangalore', country: 'India', jobs: 2450, icon: '🇮🇳', avgSalary: '₹22 LPA', growth: '+24%', highlight: 'IT services capital', companies: 290, remote: 42 },
+    { city: 'Berlin', country: 'Germany', jobs: 1120, icon: '🇩🇪', avgSalary: '€68k', growth: '+16%', highlight: 'Startups & SaaS', companies: 185, remote: 38 },
+    { city: 'Toronto', country: 'Canada', jobs: 980, icon: '🇨🇦', avgSalary: 'C$95k', growth: '+15%', highlight: 'AI & health tech', companies: 210, remote: 35 },
+    { city: 'Singapore', country: 'Singapore', jobs: 870, icon: '🇸🇬', avgSalary: 'S$95k', growth: '+13%', highlight: 'Asia-Pacific HQ', companies: 165, remote: 22 },
+    { city: 'Sydney', country: 'Australia', jobs: 760, icon: '🇦🇺', avgSalary: 'A$110k', growth: '+11%', highlight: 'Enterprise & cloud', companies: 140, remote: 30 },
+    { city: 'Remote', country: 'Worldwide', jobs: 5200, icon: '🌍', avgSalary: '$125k', growth: '+32%', highlight: 'Work from anywhere', companies: 890, remote: 100 },
+    { city: 'Dubai', country: 'UAE', jobs: 640, icon: '🇦🇪', avgSalary: 'AED 25k/mo', growth: '+20%', highlight: 'Logistics & fintech', companies: 95, remote: 18 },
+    { city: 'Austin', country: 'USA', jobs: 890, icon: '🤠', avgSalary: '$142k', growth: '+22%', highlight: 'Tesla & tech corridor', companies: 175, remote: 40 },
+    { city: 'Seattle', country: 'USA', jobs: 1240, icon: '☕', avgSalary: '$155k', growth: '+17%', highlight: 'Amazon & Microsoft', companies: 220, remote: 36 },
+    { city: 'Hyderabad', country: 'India', jobs: 1680, icon: '🏙️', avgSalary: '₹18 LPA', growth: '+26%', highlight: 'Global delivery centers', companies: 240, remote: 45 },
+    { city: 'Amsterdam', country: 'Netherlands', jobs: 720, icon: '🇳🇱', avgSalary: '€62k', growth: '+14%', highlight: 'EU tech gateway', companies: 130, remote: 44 },
+    { city: 'Tokyo', country: 'Japan', jobs: 580, icon: '🇯🇵', avgSalary: '¥8.5M', growth: '+9%', highlight: 'Gaming & robotics', companies: 110, remote: 15 },
+    { city: 'Paris', country: 'France', jobs: 650, icon: '🇫🇷', avgSalary: '€58k', growth: '+13%', highlight: 'Luxury & SaaS', companies: 125, remote: 33 },
+    { city: 'Mumbai', country: 'India', jobs: 1420, icon: '🌊', avgSalary: '₹16 LPA', growth: '+21%', highlight: 'BFSI & startups', companies: 260, remote: 38 },
+    { city: 'Chicago', country: 'USA', jobs: 810, icon: '🏙️', avgSalary: '$128k', growth: '+10%', highlight: 'Trading & healthcare', companies: 155, remote: 29 }
   ],
 
   careerTips: [
@@ -50,22 +58,53 @@ const NiksJobsData = {
   ],
 
   categories: [
-    { id: 'tech', name: 'Technology', icon: '💻', count: 3240 },
-    { id: 'design', name: 'Design', icon: '🎨', count: 856 },
-    { id: 'marketing', name: 'Marketing', icon: '📈', count: 1278 },
-    { id: 'finance', name: 'Finance', icon: '💰', count: 989 },
-    { id: 'healthcare', name: 'Healthcare', icon: '🏥', count: 1412 },
-    { id: 'education', name: 'Education', icon: '📚', count: 534 },
-    { id: 'sales', name: 'Sales', icon: '🤝', count: 967 },
-    { id: 'remote', name: 'Remote', icon: '🌍', count: 2890 },
-    { id: 'engineering', name: 'Engineering', icon: '⚙️', count: 2100 },
-    { id: 'data', name: 'Data Science', icon: '📊', count: 745 },
-    { id: 'hr', name: 'Human Resources', icon: '👥', count: 412 },
-    { id: 'legal', name: 'Legal', icon: '⚖️', count: 298 },
-    { id: 'operations', name: 'Operations', icon: '📦', count: 623 },
-    { id: 'customer', name: 'Customer Success', icon: '🎧', count: 501 },
-    { id: 'product', name: 'Product', icon: '🚀', count: 892 },
-    { id: 'internship', name: 'Internships', icon: '🎓', count: 1156 }
+    { id: 'tech', name: 'Technology', icon: '💻', count: 3240, description: 'Software, IT & cloud roles', avgSalary: '$135k', growth: '+22%', trending: true, roles: 'Developer, DevOps, Architect' },
+    { id: 'design', name: 'Design', icon: '🎨', count: 856, description: 'UI/UX, product & visual design', avgSalary: '$105k', growth: '+15%', trending: true, roles: 'UX Designer, UI Lead' },
+    { id: 'marketing', name: 'Marketing', icon: '📈', count: 1278, description: 'Digital, brand & growth marketing', avgSalary: '$92k', growth: '+18%', trending: false, roles: 'SEO, Content, PMM' },
+    { id: 'finance', name: 'Finance', icon: '💰', count: 989, description: 'Banking, fintech & accounting', avgSalary: '$115k', growth: '+12%', trending: false, roles: 'Analyst, Controller, CFO' },
+    { id: 'healthcare', name: 'Healthcare', icon: '🏥', count: 1412, description: 'Clinical, pharma & health tech', avgSalary: '$98k', growth: '+20%', trending: true, roles: 'Nurse, Researcher, Admin' },
+    { id: 'education', name: 'Education', icon: '📚', count: 534, description: 'Teaching, EdTech & training', avgSalary: '$68k', growth: '+10%', trending: false, roles: 'Instructor, Curriculum' },
+    { id: 'sales', name: 'Sales', icon: '🤝', count: 967, description: 'B2B, enterprise & inside sales', avgSalary: '$88k', growth: '+14%', trending: false, roles: 'AE, SDR, Sales Manager' },
+    { id: 'remote', name: 'Remote', icon: '🌍', count: 2890, description: 'Work-from-anywhere positions', avgSalary: '$125k', growth: '+32%', trending: true, roles: 'All disciplines' },
+    { id: 'engineering', name: 'Engineering', icon: '⚙️', count: 2100, description: 'Mechanical, civil & electrical', avgSalary: '$102k', growth: '+11%', trending: false, roles: 'Engineer, Technician' },
+    { id: 'data', name: 'Data Science', icon: '📊', count: 745, description: 'ML, analytics & BI roles', avgSalary: '$145k', growth: '+28%', trending: true, roles: 'Data Scientist, ML Engineer' },
+    { id: 'hr', name: 'Human Resources', icon: '👥', count: 412, description: 'Talent, HRBP & people ops', avgSalary: '$85k', growth: '+9%', trending: false, roles: 'Recruiter, HR Manager' },
+    { id: 'legal', name: 'Legal', icon: '⚖️', count: 298, description: 'Corporate, IP & compliance', avgSalary: '$130k', growth: '+8%', trending: false, roles: 'Counsel, Paralegal' },
+    { id: 'operations', name: 'Operations', icon: '📦', count: 623, description: 'Supply chain & business ops', avgSalary: '$90k', growth: '+13%', trending: false, roles: 'Ops Manager, Analyst' },
+    { id: 'customer', name: 'Customer Success', icon: '🎧', count: 501, description: 'Support, CS & client relations', avgSalary: '$78k', growth: '+16%', trending: false, roles: 'CSM, Support Lead' },
+    { id: 'product', name: 'Product', icon: '🚀', count: 892, description: 'Product management & strategy', avgSalary: '$138k', growth: '+19%', trending: true, roles: 'PM, Product Owner' },
+    { id: 'internship', name: 'Internships', icon: '🎓', count: 1156, description: 'Students & new graduates', avgSalary: '$45/hr', growth: '+25%', trending: true, roles: 'Intern, Co-op' },
+    { id: 'cybersecurity', name: 'Cybersecurity', icon: '🔐', count: 534, description: 'Security, SOC & compliance', avgSalary: '$128k', growth: '+30%', trending: true, roles: 'Security Engineer, Analyst' },
+    { id: 'blockchain', name: 'Web3 & Blockchain', icon: '⛓️', count: 312, description: 'Crypto, DeFi & smart contracts', avgSalary: '$155k', growth: '+35%', trending: true, roles: 'Solidity Dev, Web3 PM' },
+    { id: 'content', name: 'Content & Writing', icon: '✍️', count: 445, description: 'Copywriting, editing & media', avgSalary: '$72k', growth: '+14%', trending: false, roles: 'Writer, Editor, Strategist' },
+    { id: 'construction', name: 'Construction', icon: '🏗️', count: 678, description: 'Building, project & site roles', avgSalary: '$82k', growth: '+9%', trending: false, roles: 'Project Manager, Surveyor' },
+    { id: 'hospitality', name: 'Hospitality', icon: '🏨', count: 521, description: 'Hotels, travel & food service', avgSalary: '$55k', growth: '+11%', trending: false, roles: 'Manager, Chef, Concierge' },
+    { id: 'manufacturing', name: 'Manufacturing', icon: '🏭', count: 389, description: 'Production & quality control', avgSalary: '$74k', growth: '+7%', trending: false, roles: 'Technician, QA Lead' },
+    { id: 'nonprofit', name: 'Nonprofit', icon: '❤️', count: 234, description: 'NGO, social impact & charity', avgSalary: '$62k', growth: '+8%', trending: false, roles: 'Coordinator, Director' },
+    { id: 'government', name: 'Government', icon: '🏛️', count: 412, description: 'Public sector & policy roles', avgSalary: '$78k', growth: '+6%', trending: false, roles: 'Analyst, Administrator' }
+  ],
+
+  featuredCompanies: [
+    { id: 'c1', name: 'Google', logo: 'G', color: '#4285F4', industry: 'Technology', openJobs: 248, rating: 4.8, reviews: 12400, hiringNow: true, tagline: 'Organize the world\'s information' },
+    { id: 'c2', name: 'Microsoft', logo: 'M', color: '#00A4EF', industry: 'Technology', openJobs: 312, rating: 4.7, reviews: 9800, hiringNow: true, tagline: 'Empower every person and organization' },
+    { id: 'c3', name: 'Amazon', logo: 'A', color: '#FF9900', industry: 'E-commerce', openJobs: 456, rating: 4.5, reviews: 18200, hiringNow: true, tagline: 'Earth\'s most customer-centric company' },
+    { id: 'c4', name: 'Meta', logo: 'F', color: '#0668E1', industry: 'Social Media', openJobs: 189, rating: 4.4, reviews: 7600, hiringNow: true, tagline: 'Build the future of connection' },
+    { id: 'c5', name: 'Netflix', logo: 'N', color: '#E50914', industry: 'Entertainment', openJobs: 94, rating: 4.6, reviews: 4200, hiringNow: true, tagline: 'Entertain the world' },
+    { id: 'c6', name: 'Stripe', logo: 'S', color: '#635BFF', industry: 'Fintech', openJobs: 127, rating: 4.9, reviews: 2100, hiringNow: true, tagline: 'Increase the GDP of the internet' },
+    { id: 'c7', name: 'Spotify', logo: '♪', color: '#1DB954', industry: 'Music', openJobs: 78, rating: 4.5, reviews: 3400, hiringNow: false, tagline: 'Unlock the potential of human creativity' },
+    { id: 'c8', name: 'Airbnb', logo: '⌂', color: '#FF5A5F', industry: 'Travel', openJobs: 112, rating: 4.6, reviews: 5100, hiringNow: true, tagline: 'Belong anywhere' },
+    { id: 'c9', name: 'Apple', logo: 'A', color: '#555555', industry: 'Technology', openJobs: 203, rating: 4.7, reviews: 8900, hiringNow: true, tagline: 'Think different' },
+    { id: 'c10', name: 'Tesla', logo: 'T', color: '#CC0000', industry: 'Automotive', openJobs: 167, rating: 4.3, reviews: 6200, hiringNow: true, tagline: 'Accelerate sustainable energy' },
+    { id: 'c11', name: 'Adobe', logo: 'Ad', color: '#FF0000', industry: 'Software', openJobs: 145, rating: 4.6, reviews: 4800, hiringNow: true, tagline: 'Change the world through digital experiences' },
+    { id: 'c12', name: 'Salesforce', logo: 'Sf', color: '#00A1E0', industry: 'SaaS', openJobs: 278, rating: 4.5, reviews: 7100, hiringNow: true, tagline: 'The world\'s #1 CRM platform' },
+    { id: 'c13', name: 'IBM', logo: 'IBM', color: '#054ADA', industry: 'Technology', openJobs: 198, rating: 4.4, reviews: 5600, hiringNow: false, tagline: 'Let\'s create smarter business' },
+    { id: 'c14', name: 'Deloitte', logo: 'D', color: '#86BC25', industry: 'Consulting', openJobs: 342, rating: 4.3, reviews: 9200, hiringNow: true, tagline: 'Make an impact that matters' },
+    { id: 'c15', name: 'Uber', logo: 'U', color: '#000000', industry: 'Mobility', openJobs: 156, rating: 4.2, reviews: 6800, hiringNow: true, tagline: 'Move the way you want' },
+    { id: 'c16', name: 'Shopify', logo: 'S', color: '#96BF48', industry: 'E-commerce', openJobs: 134, rating: 4.7, reviews: 2900, hiringNow: true, tagline: 'Make commerce better for everyone' },
+    { id: 'c17', name: 'Nvidia', logo: 'N', color: '#76B900', industry: 'Semiconductors', openJobs: 221, rating: 4.8, reviews: 3400, hiringNow: true, tagline: 'Pioneer accelerated computing' },
+    { id: 'c18', name: 'LinkedIn', logo: 'in', color: '#0A66C2', industry: 'Professional Network', openJobs: 98, rating: 4.5, reviews: 4100, hiringNow: true, tagline: 'Connect the world\'s professionals' },
+    { id: 'c19', name: 'Twitter/X', logo: 'X', color: '#000000', industry: 'Social Media', openJobs: 67, rating: 4.1, reviews: 3200, hiringNow: false, tagline: 'What\'s happening' },
+    { id: 'c20', name: 'PayPal', logo: 'P', color: '#003087', industry: 'Fintech', openJobs: 143, rating: 4.4, reviews: 4500, hiringNow: true, tagline: 'Democratize financial services' }
   ],
 
   jobs: [
@@ -189,7 +228,13 @@ const NiksJobsData = {
 };
 
 function getCompany(companyId) {
-  return NiksJobsData.companies.find(c => c.id === companyId) || { name: 'Unknown', logo: '?', color: '#64748B' };
+  const fromMain = NiksJobsData.companies.find(c => c.id === companyId);
+  if (fromMain) return fromMain;
+  const fromFeatured = NiksJobsData.featuredCompanies.find(c => c.id === companyId);
+  if (fromFeatured) {
+    return { ...fromFeatured, employees: '—', website: '#', about: fromFeatured.tagline, location: '—' };
+  }
+  return { name: 'Unknown', logo: '?', color: '#64748B' };
 }
 
 function getJobWithCompany(job) {

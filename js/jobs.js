@@ -20,6 +20,7 @@ const Jobs = {
     this.renderFilters();
     this.renderRecommendations();
     this.renderRecentlyViewed();
+    Utils.initScrollReveal();
   },
 
   bindEvents() {
@@ -382,7 +383,7 @@ const Jobs = {
       .slice(0, 9);
     container.innerHTML = jobs.map(job => this.renderJobCard(job)).join('');
     this.bindJobCardEvents(container);
-    Utils.initScrollReveal();
+    Utils.showRevealsIn(container);
   },
 
   renderJobDetail() {

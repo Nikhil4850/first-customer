@@ -7,7 +7,7 @@ const App = {
 
     Theme.init();
     this.initHeader();
-    Notifications.init();
+    try { Notifications.init(); } catch (e) { console.warn('Notifications init skipped', e); }
     Utils.initRippleButtons();
     Utils.lazyLoadImages();
     Utils.initScrollReveal();
@@ -52,6 +52,11 @@ const App = {
   },
 
   initHome() {
+    if (typeof NiksJobsData === 'undefined') {
+      console.error('Niks Jobs: data failed to load. Check js/data.js');
+      return;
+    }
+
     Jobs.state.jobs = getAllJobsEnriched();
     Jobs.renderHomeJobs();
     this.renderCategories();
@@ -61,6 +66,14 @@ const App = {
     this.renderTestimonials();
     this.initCounters();
     this.initHeroSearch();
+
+    Utils.showRevealsIn(Utils.$('#categories-grid'));
+    Utils.showRevealsIn(Utils.$('#featured-companies'));
+    Utils.showRevealsIn(Utils.$('#locations-grid'));
+    Utils.showRevealsIn(Utils.$('#latest-jobs'));
+    Utils.showRevealsIn(Utils.$('#career-tips-grid'));
+    Utils.showRevealsIn(Utils.$('#testimonials-grid'));
+    Utils.initScrollReveal();
   },
 
   renderLocations() {
@@ -70,10 +83,23 @@ const App = {
       <a href="jobs.html?location=${encodeURIComponent(loc.city)}" class="card location-card reveal">
         <span class="location-icon">${loc.icon}</span>
         <h3>${Utils.escapeHtml(loc.city)}</h3>
-        <p>${Utils.escapeHtml(loc.country)}</p>
-        <span class="badge badge-accent">${loc.jobs.toLocaleString()} jobs</span>
+        <p class="location-country">${Utils.escapeHtml(loc.country)}</p>
+        <p class="location-highlight">${Utils.escapeHtml(loc.highlight || '')}</p>
+        <div class="location-stats">
+          <span><strong>${loc.jobs.toLocaleString()}</strong> jobs</span>
+          <span><strong>${loc.avgSalary || '—'}</strong> avg</span>
+          <span class="location-growth">${loc.growth || ''}</span>
+        </div>
+        <div class="location-meta">
+          <span class="tag">${loc.companies || 0} companies</span>
+          <span class="tag">${loc.remote || 0}% remote</span>
+        </div>
       </a>
     `).join('');
+
+    if (!NiksJobsData.topLocations.length) {
+      container.innerHTML = '<p class="empty-state">No locations available.</p>';
+    }
   },
 
   renderCareerTips() {
@@ -115,9 +141,16 @@ const App = {
     if (!container) return;
     container.innerHTML = NiksJobsData.categories.map(cat => `
       <div class="card category-card reveal" data-category="${cat.id}">
+        ${cat.trending ? '<span class="category-trending">Trending</span>' : ''}
         <div class="icon">${cat.icon}</div>
         <h3>${cat.name}</h3>
-        <span>${cat.count.toLocaleString()} jobs</span>
+        <p class="category-desc">${Utils.escapeHtml(cat.description || '')}</p>
+        <div class="category-meta">
+          <span class="badge">${cat.count.toLocaleString()} jobs</span>
+          <span class="category-salary">${cat.avgSalary || ''}</span>
+        </div>
+        <p class="category-roles">${Utils.escapeHtml(cat.roles || '')}</p>
+        ${cat.growth ? `<span class="category-growth">${cat.growth} YoY</span>` : ''}
       </div>
     `).join('');
     Utils.$$('.category-card').forEach(card => {
@@ -125,18 +158,34 @@ const App = {
         window.location.href = `jobs.html?category=${card.dataset.category}`;
       });
     });
+
+    if (!NiksJobsData.categories.length) {
+      container.innerHTML = '<p class="empty-state">No categories available.</p>';
+    }
   },
 
   renderCompanies() {
     const container = Utils.$('#featured-companies');
     if (!container) return;
-    container.innerHTML = NiksJobsData.companies.map(c => `
-      <a href="company.html?id=${c.id}" class="card company-card reveal">
+    const list = NiksJobsData.featuredCompanies || NiksJobsData.companies;
+    container.innerHTML = list.map(c => `
+      <a href="company.html?id=${c.id}" class="card company-card reveal company-card-rich">
+        ${c.hiringNow ? '<span class="company-hiring">Hiring now</span>' : ''}
         <div class="logo avatar" style="background:${c.color}20;color:${c.color}">${c.logo}</div>
         <h3>${Utils.escapeHtml(c.name)}</h3>
-        <span>${c.industry}</span>
+        <p class="company-tagline">${Utils.escapeHtml(c.tagline || c.industry)}</p>
+        <span class="company-industry">${Utils.escapeHtml(c.industry)}</span>
+        <div class="company-stats">
+          <span class="badge badge-accent">${c.openJobs || 0} open roles</span>
+          <span class="company-rating">★ ${c.rating || '4.5'}</span>
+        </div>
+        <p class="company-reviews">${(c.reviews || 0).toLocaleString()} reviews</p>
       </a>
     `).join('');
+
+    if (!list.length) {
+      container.innerHTML = '<p class="empty-state">No featured companies yet.</p>';
+    }
   },
 
   renderTestimonials() {

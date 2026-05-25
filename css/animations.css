@@ -60,6 +60,24 @@
   transform: translateY(0);
 }
 
+/* Home section grids: show content once JS renders (prevents invisible cards) */
+#categories-grid .reveal,
+#featured-companies .reveal,
+#locations-grid .reveal,
+#latest-jobs .reveal,
+#career-tips-grid .reveal,
+#testimonials-grid .reveal,
+#jobs-container .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+#categories-grid:not(:empty),
+#featured-companies:not(:empty),
+#locations-grid:not(:empty) {
+  min-height: 120px;
+}
+
 .skeleton {
   background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 50%, var(--bg-tertiary) 75%);
   background-size: 200% 100%;
