@@ -1,4 +1,4 @@
-const Auth = {
+﻿const Auth = {
   PROTECTED_PAGES: ['dashboard', 'employer', 'profile'],
 
   bootstrap() {
@@ -11,14 +11,14 @@ const Auth = {
   migrateLegacySession() {
     if (Storage.getSession()) return;
     try {
-      const legacy = localStorage.getItem('niksjobs_user');
+      const legacy = localStorage.getItem('freshajobs_user');
       if (!legacy) return;
       const user = JSON.parse(legacy);
       if (user?.loggedIn && user?.email) {
         const account = Storage.findUserByEmail(user.email);
         if (account) Storage.setSession(account);
       }
-      localStorage.removeItem('niksjobs_user');
+      localStorage.removeItem('freshajobs_user');
     } catch { /* ignore */ }
   },
 
@@ -101,7 +101,6 @@ const Auth = {
   login(email, password) {
     const user = Storage.authenticate(email.trim(), password);
     if (!user) return { success: false, error: 'Invalid email or password. Please try again or create an account.' };
-
     Storage.setSession(user);
     return { success: true, user };
   },
@@ -118,34 +117,25 @@ const Auth = {
     document.querySelectorAll('[data-auth-guest]').forEach(el => {
       el.style.display = isLoggedIn ? 'none' : '';
     });
-
     document.querySelectorAll('[data-auth-user]').forEach(el => {
       el.style.display = isLoggedIn ? '' : 'none';
     });
-
     document.querySelectorAll('[data-auth-only]').forEach(el => {
       el.style.display = isLoggedIn ? '' : 'none';
     });
-
     document.querySelectorAll('[data-guest-only]').forEach(el => {
       el.style.display = isLoggedIn ? 'none' : '';
     });
 
-    const userNameEls = document.querySelectorAll('[data-user-name]');
-    const userEmailEls = document.querySelectorAll('[data-user-email]');
-    const userInitialEls = document.querySelectorAll('[data-user-initials]');
-
     if (user) {
-      userNameEls.forEach(el => { el.textContent = user.name; });
-      userEmailEls.forEach(el => { el.textContent = user.email; });
-      userInitialEls.forEach(el => { el.textContent = this.getInitials(user.name); });
+      document.querySelectorAll('[data-user-name]').forEach(el => { el.textContent = user.name; });
+      document.querySelectorAll('[data-user-email]').forEach(el => { el.textContent = user.email; });
+      document.querySelectorAll('[data-user-initials]').forEach(el => { el.textContent = this.getInitials(user.name); });
     }
 
-    const dashboardLinks = document.querySelectorAll('a[href="dashboard.html"]');
-    dashboardLinks.forEach(link => {
+    document.querySelectorAll('a[href="dashboard.html"]').forEach(link => {
       if (!isLoggedIn) {
         link.setAttribute('href', 'login.html?redirect=dashboard.html');
-        link.setAttribute('title', 'Log in to access dashboard');
       } else if (user.role === 'employer') {
         link.setAttribute('href', 'employer-dashboard.html');
       } else {
@@ -153,8 +143,7 @@ const Auth = {
       }
     });
 
-    const profileLinks = document.querySelectorAll('a[href="profile.html"]');
-    profileLinks.forEach(link => {
+    document.querySelectorAll('a[href="profile.html"]').forEach(link => {
       if (!isLoggedIn) link.setAttribute('href', 'login.html?redirect=profile.html');
     });
 
@@ -175,9 +164,7 @@ const Auth = {
 
       const authBlock = document.createElement('div');
       authBlock.dataset.navAuth = 'true';
-      authBlock.style.display = 'flex';
-      authBlock.style.alignItems = 'center';
-      authBlock.style.gap = '0.75rem';
+      authBlock.style.cssText = 'display:flex;align-items:center;gap:0.75rem';
 
       if (user) {
         const dashHref = user.role === 'employer' ? 'employer-dashboard.html' : 'dashboard.html';
@@ -190,8 +177,8 @@ const Auth = {
         `;
       } else {
         authBlock.innerHTML = `
-          <a href="login.html" class="btn btn-ghost btn-sm" data-guest-only>Log In</a>
-          <a href="register.html" class="btn btn-primary btn-sm" data-guest-only>Sign Up</a>
+          <a href="login.html" class="btn btn-ghost btn-sm">Log In</a>
+          <a href="register.html" class="btn btn-primary btn-sm">Sign Up</a>
         `;
       }
 
@@ -289,7 +276,6 @@ const Auth = {
         this.showError(password, 'Password must be at least 8 characters');
         valid = false;
       }
-
       if (!valid) return;
 
       this.setLoading(form, true);
@@ -328,23 +314,10 @@ const Auth = {
 
       [name, email, password, confirm].forEach(input => this.clearError(input));
 
-      if (!name.value.trim()) {
-        this.showError(name, 'Name is required');
-        valid = false;
-      }
-      if (!this.validateEmail(email.value)) {
-        this.showError(email, 'Please enter a valid email');
-        valid = false;
-      }
-      if (!this.validatePassword(password.value)) {
-        this.showError(password, 'Password must be at least 8 characters');
-        valid = false;
-      }
-      if (password.value !== confirm.value) {
-        this.showError(confirm, 'Passwords do not match');
-        valid = false;
-      }
-
+      if (!name.value.trim()) { this.showError(name, 'Name is required'); valid = false; }
+      if (!this.validateEmail(email.value)) { this.showError(email, 'Please enter a valid email'); valid = false; }
+      if (!this.validatePassword(password.value)) { this.showError(password, 'Password must be at least 8 characters'); valid = false; }
+      if (password.value !== confirm.value) { this.showError(confirm, 'Passwords do not match'); valid = false; }
       if (!valid) return;
 
       this.setLoading(form, true);
@@ -381,7 +354,6 @@ const Auth = {
         this.showError(email, 'Please enter a valid email');
         return;
       }
-
       if (!Storage.findUserByEmail(email.value)) {
         this.showError(email, 'No account found with this email');
         return;

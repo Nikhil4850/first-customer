@@ -1,8 +1,9 @@
-const Notifications = {
+﻿const Notifications = {
   init() {
     this.renderDropdown();
     this.updateBadge();
-    const btn = Utils.$('.notif-btn');
+
+    const btn      = Utils.$('.notif-btn');
     const dropdown = Utils.$('.notif-dropdown');
     if (!btn || !dropdown) return;
 
@@ -11,8 +12,10 @@ const Notifications = {
       dropdown.classList.toggle('active');
     });
 
-    document.addEventListener('click', () => {
-      dropdown.classList.remove('active');
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target) && e.target !== btn) {
+        dropdown.classList.remove('active');
+      }
     });
 
     dropdown.addEventListener('click', (e) => e.stopPropagation());
@@ -20,17 +23,18 @@ const Notifications = {
     Utils.$('.mark-all-read')?.addEventListener('click', () => {
       Storage.markNotificationsRead();
       this.updateBadge();
-      Utils.$$('.notif-item').forEach(item => item.classList.remove('unread'));
+      // Use querySelectorAll directly — safe regardless of Utils state
+      document.querySelectorAll('.notif-item').forEach(item => item.classList.remove('unread'));
       Utils.showToast('All notifications marked as read', 'success');
     });
   },
 
   renderDropdown() {
     const list = Utils.$('.notif-list');
-    if (!list) return;
+    if (!list || typeof FreshaJobsData === 'undefined') return;
 
     const read = Storage.get(Storage.KEYS.VIEWED_NOTIFICATIONS, []);
-    list.innerHTML = NiksJobsData.notifications.map(n => `
+    list.innerHTML = FreshaJobsData.notifications.map(n => `
       <div class="notif-item ${!read.includes(n.id) && n.unread ? 'unread' : ''}" data-id="${n.id}">
         <div class="notif-icon ${n.type}">${this.getIcon(n.type)}</div>
         <div class="notif-content">
@@ -49,14 +53,13 @@ const Notifications = {
 
   updateBadge() {
     const badge = Utils.$('.notif-badge');
+    if (!badge) return;
     const count = Storage.getUnreadCount();
-    if (badge) {
-      if (count > 0) {
-        badge.textContent = count > 9 ? '9+' : count;
-        badge.style.display = 'flex';
-      } else {
-        badge.style.display = 'none';
-      }
+    if (count > 0) {
+      badge.textContent = count > 9 ? '9+' : count;
+      badge.style.display = 'flex';
+    } else {
+      badge.style.display = 'none';
     }
   }
 };

@@ -1,4 +1,4 @@
-const Jobs = {
+﻿const Jobs = {
   state: {
     jobs: [],
     filtered: [],
@@ -57,7 +57,8 @@ const Jobs = {
 
     Utils.$('#infinite-scroll-toggle')?.addEventListener('change', (e) => {
       this.state.infiniteMode = e.target.checked;
-      Utils.$('#pagination-wrap').style.display = e.target.checked ? 'none' : 'flex';
+      const wrap = Utils.$('#pagination-wrap');
+      if (wrap) wrap.style.display = e.target.checked ? 'none' : 'flex';
     });
 
     window.addEventListener('scroll', Utils.debounce(() => {
@@ -70,7 +71,7 @@ const Jobs = {
 
   applyFiltersFromURL() {
     const params = new URLSearchParams(window.location.search);
-    if (params.get('q')) this.state.filters.search = params.get('q');
+    if (params.get('q'))        this.state.filters.search   = params.get('q');
     if (params.get('location')) this.state.filters.location = params.get('location');
     if (params.get('category')) this.state.filters.category = params.get('category');
     const searchInput = Utils.$('#job-search');
@@ -84,16 +85,14 @@ const Jobs = {
 
     const locations = [...new Set(this.state.jobs.map(j => j.location.split(',')[0]))];
     const companies = [...new Set(this.state.jobs.map(j => j.company.name))];
-    const types = [...new Set(this.state.jobs.map(j => j.type))];
-    const remotes = [...new Set(this.state.jobs.map(j => j.remote))];
+    const types     = [...new Set(this.state.jobs.map(j => j.type))];
+    const remotes   = [...new Set(this.state.jobs.map(j => j.remote))];
 
     container.innerHTML = `
       <div class="filter-group card">
         <h4>Location</h4>
         <div class="filter-options" id="filter-location">
-          ${locations.slice(0, 8).map(loc => `
-            <label><input type="checkbox" name="location" value="${loc}"> ${loc}</label>
-          `).join('')}
+          ${locations.slice(0, 8).map(loc => `<label><input type="checkbox" name="location" value="${loc}"> ${loc}</label>`).join('')}
         </div>
       </div>
       <div class="filter-group card">
@@ -135,9 +134,7 @@ const Jobs = {
       <div class="filter-group card">
         <h4>Skills</h4>
         <div class="filter-options" id="filter-skills">
-          ${['React', 'Python', 'JavaScript', 'AWS', 'TypeScript', 'Node.js'].map(s => `
-            <label><input type="checkbox" name="skills" value="${s}"> ${s}</label>
-          `).join('')}
+          ${['React', 'Python', 'JavaScript', 'AWS', 'TypeScript', 'Node.js'].map(s => `<label><input type="checkbox" name="skills" value="${s}"> ${s}</label>`).join('')}
         </div>
       </div>
       <button class="btn btn-outline" style="width:100%" id="clear-filters">Clear All Filters</button>
@@ -181,25 +178,11 @@ const Jobs = {
       );
     }
 
-    if (f.location?.length) {
-      result = result.filter(j => f.location.some(loc => j.location.includes(loc)));
-    }
-
-    if (f.type?.length) {
-      result = result.filter(j => f.type.includes(j.type));
-    }
-
-    if (f.remote?.length) {
-      result = result.filter(j => f.remote.includes(j.remote));
-    }
-
-    if (f.company?.length) {
-      result = result.filter(j => f.company.includes(j.company.name));
-    }
-
-    if (f.skills?.length) {
-      result = result.filter(j => f.skills.some(s => j.skills.includes(s)));
-    }
+    if (f.location?.length) result = result.filter(j => f.location.some(loc => j.location.includes(loc)));
+    if (f.type?.length)     result = result.filter(j => f.type.includes(j.type));
+    if (f.remote?.length)   result = result.filter(j => f.remote.includes(j.remote));
+    if (f.company?.length)  result = result.filter(j => f.company.includes(j.company.name));
+    if (f.skills?.length)   result = result.filter(j => f.skills.some(s => j.skills.includes(s)));
 
     if (f.experience?.length) {
       result = result.filter(j => {
@@ -208,7 +191,7 @@ const Jobs = {
           if (e === '0-1') return exp.includes('0') || exp.includes('1') || exp.includes('Intern');
           if (e === '2-3') return exp.includes('2') || exp.includes('3');
           if (e === '4-6') return exp.includes('4') || exp.includes('5') || exp.includes('6');
-          if (e === '7+') return exp.includes('7') || exp.includes('PhD');
+          if (e === '7+')  return exp.includes('7') || exp.includes('PhD');
           return true;
         });
       });
@@ -219,27 +202,20 @@ const Jobs = {
         const match = j.salary.match(/\$?(\d+)/);
         const num = match ? parseInt(match[1]) : 0;
         return f.salary.some(range => {
-          if (range === '0-100') return num < 100;
+          if (range === '0-100')   return num < 100;
           if (range === '100-150') return num >= 100 && num < 150;
           if (range === '150-200') return num >= 150 && num < 200;
-          if (range === '200+') return num >= 200;
+          if (range === '200+')    return num >= 200;
           return true;
         });
       });
     }
 
     switch (this.state.sort) {
-      case 'salary-high':
-        result.sort((a, b) => this.parseSalary(b.salary) - this.parseSalary(a.salary));
-        break;
-      case 'salary-low':
-        result.sort((a, b) => this.parseSalary(a.salary) - this.parseSalary(b.salary));
-        break;
-      case 'oldest':
-        result.sort((a, b) => new Date(a.posted) - new Date(b.posted));
-        break;
-      default:
-        result.sort((a, b) => new Date(b.posted) - new Date(a.posted));
+      case 'salary-high': result.sort((a, b) => this.parseSalary(b.salary) - this.parseSalary(a.salary)); break;
+      case 'salary-low':  result.sort((a, b) => this.parseSalary(a.salary) - this.parseSalary(b.salary)); break;
+      case 'oldest':      result.sort((a, b) => new Date(a.posted) - new Date(b.posted)); break;
+      default:            result.sort((a, b) => new Date(b.posted) - new Date(a.posted));
     }
 
     this.state.filtered = result;
@@ -262,9 +238,8 @@ const Jobs = {
     const container = Utils.$('#jobs-container');
     if (!container) return;
 
-    const start = 0;
     const end = this.state.page * this.state.perPage;
-    const jobs = this.state.filtered.slice(start, end);
+    const jobs = this.state.filtered.slice(0, end);
 
     if (jobs.length === 0) {
       container.innerHTML = `<div class="empty-state"><p>No jobs match your criteria. Try adjusting filters.</p></div>`;
@@ -278,9 +253,7 @@ const Jobs = {
     this.renderPagination();
 
     const paginationWrap = Utils.$('#pagination-wrap');
-    if (paginationWrap && !this.state.infiniteMode) {
-      paginationWrap.style.display = 'flex';
-    }
+    if (paginationWrap && !this.state.infiniteMode) paginationWrap.style.display = 'flex';
   },
 
   renderJobCard(job) {
@@ -293,7 +266,7 @@ const Jobs = {
             <h3 class="job-card-title"><a href="job-details.html?id=${job.id}">${Utils.escapeHtml(job.title)}</a></h3>
             <p class="job-card-company"><a href="company.html?id=${job.companyId}">${Utils.escapeHtml(job.company.name)}</a></p>
           </div>
-          <button class="save-btn ${saved ? 'saved' : ''}" data-id="${job.id}" aria-label="Save job">★</button>
+          <button class="save-btn ${saved ? 'saved' : ''}" data-id="${job.id}" aria-label="${saved ? 'Unsave job' : 'Save job'}">★</button>
         </div>
         <div class="job-card-meta">
           <span>💰 ${job.salary}</span>
@@ -325,6 +298,7 @@ const Jobs = {
         e.stopPropagation();
         const saved = Storage.toggleSavedJob(btn.dataset.id);
         btn.classList.toggle('saved', saved);
+        btn.setAttribute('aria-label', saved ? 'Unsave job' : 'Save job');
         Utils.showToast(saved ? 'Job saved!' : 'Job removed from saved', saved ? 'success' : 'info');
       });
     });
@@ -336,10 +310,7 @@ const Jobs = {
     if (!wrap) return;
 
     const totalPages = Math.ceil(this.state.filtered.length / this.state.perPage);
-    if (totalPages <= 1) {
-      wrap.innerHTML = '';
-      return;
-    }
+    if (totalPages <= 1) { wrap.innerHTML = ''; return; }
 
     let html = `<button ${this.state.page === 1 ? 'disabled' : ''} data-page="${this.state.page - 1}">←</button>`;
     for (let i = 1; i <= totalPages; i++) {
@@ -388,19 +359,13 @@ const Jobs = {
 
   renderJobDetail() {
     const id = Utils.getQueryParam('id');
-    if (!id) {
-      window.location.href = 'jobs.html';
-      return;
-    }
+    if (!id) { window.location.href = 'jobs.html'; return; }
 
     const job = this.state.jobs.find(j => j.id === id);
-    if (!job) {
-      window.location.href = 'jobs.html';
-      return;
-    }
+    if (!job) { window.location.href = 'jobs.html'; return; }
 
     Storage.addRecentJob(id);
-    document.title = `${job.title} at ${job.company.name} | Niks Jobs`;
+    document.title = `${job.title} at ${job.company.name} | Fresha Jobs`;
 
     const main = Utils.$('#job-detail-content');
     if (!main) return;
@@ -420,7 +385,6 @@ const Jobs = {
           </div>
         </div>
       </div>
-
       <div class="card job-description">
         <h3>About the Role</h3>
         <p>${Utils.escapeHtml(job.description)}</p>
@@ -449,7 +413,6 @@ const Jobs = {
           <li>401(k) matching and wellness programs</li>
         </ul>
       </div>
-
       <div class="card">
         <h3>Skills Required</h3>
         <div class="skills-list" style="margin-top:1rem">
@@ -485,14 +448,8 @@ const Jobs = {
 
       Utils.$$('.share-buttons button').forEach(btn => {
         btn.addEventListener('click', () => {
-          const url = window.location.href;
-          if (btn.dataset.share === 'copy') {
-            navigator.clipboard?.writeText(url);
-            Utils.showToast('Link copied!', 'success');
-          } else {
-            Utils.showToast('Share link copied!', 'success');
-            navigator.clipboard?.writeText(url);
-          }
+          navigator.clipboard?.writeText(window.location.href);
+          Utils.showToast('Link copied!', 'success');
         });
       });
     }

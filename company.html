@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Company Profile | Niks Jobs</title>
+  <title>Company Profile | Fresha Jobs</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
@@ -12,11 +12,95 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/pages.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .cp-hero {
+      padding-top: calc(var(--header-height) + 2.5rem);
+      padding-bottom: 0;
+      background: var(--gradient-card);
+      border-bottom: 1px solid var(--border);
+    }
+    .cp-hero-inner { display:flex; gap:2rem; align-items:flex-end; padding-bottom:2rem; }
+    .cp-logo-wrap {
+      width:100px; height:100px; border-radius:var(--radius-lg);
+      background:var(--bg-secondary); border:2px solid var(--border);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden; flex-shrink:0;
+    }
+    .cp-logo-wrap img { width:100%; height:100%; object-fit:contain; padding:12px; }
+    .cp-logo-fallback { font-size:2.2rem; font-weight:700; font-family:var(--font-display); }
+    .cp-meta { flex:1; min-width:0; }
+    .cp-meta h1 { margin-bottom:0.25rem; font-size:clamp(1.5rem,3vw,2.25rem); }
+    .cp-meta-row { display:flex; flex-wrap:wrap; gap:1rem; font-size:0.9rem; color:var(--text-secondary); margin-top:0.5rem; }
+    .cp-meta-row span { display:flex; align-items:center; gap:0.35rem; }
+    .cp-tabs { display:flex; gap:0; border-top:1px solid var(--border); margin-top:1.5rem; }
+    .cp-tab {
+      padding:0.75rem 1.25rem; font-size:0.9rem; font-weight:500;
+      color:var(--text-secondary); cursor:pointer;
+      border-bottom:2px solid transparent; transition:all var(--transition-fast);
+      background:none; border-top:none; border-left:none; border-right:none;
+    }
+    .cp-tab:hover { color:var(--text-primary); }
+    .cp-tab.active { color:var(--primary-light); border-bottom-color:var(--primary); }
+    .cp-body { padding:2.5rem 0 4rem; }
+    .cp-grid { display:grid; grid-template-columns:1fr 340px; gap:2rem; align-items:start; }
+    .cp-section { margin-bottom:2rem; }
+    .cp-section h2 { font-size:1.125rem; margin-bottom:1rem; }
+    .cp-rating-bar { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem; }
+    .cp-rating-num { font-size:3rem; font-weight:700; font-family:var(--font-display); color:var(--accent-light); line-height:1; }
+    .cp-stars { color:var(--accent-light); font-size:1.1rem; letter-spacing:2px; }
+    .cp-reviews-count { font-size:0.875rem; color:var(--text-muted); }
+    .benefits-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:0.75rem; }
+    .benefit-item {
+      display:flex; align-items:center; gap:0.6rem;
+      padding:0.65rem 0.9rem; background:var(--bg-secondary);
+      border:1px solid var(--border); border-radius:var(--radius-sm); font-size:0.875rem;
+    }
+    .benefit-item::before { content:'✓'; color:var(--primary-light); font-weight:700; flex-shrink:0; }
+    .tech-tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
+    .tech-tag {
+      padding:0.35rem 0.8rem; background:rgba(124,58,237,0.12);
+      color:var(--primary-light); border:1px solid rgba(124,58,237,0.25);
+      border-radius:var(--radius-full); font-size:0.8125rem; font-weight:500;
+    }
+    .cp-info-list { display:flex; flex-direction:column; gap:0.75rem; font-size:0.9rem; list-style:none; padding:0; margin:0; }
+    .cp-info-list li { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    .cp-info-list li span:first-child { color:var(--text-muted); flex-shrink:0; }
+    .cp-info-list li span:last-child { color:var(--text-primary); font-weight:500; text-align:right; }
+    .cp-social-links { display:flex; gap:0.75rem; }
+    .cp-social-link {
+      display:flex; align-items:center; justify-content:center;
+      width:38px; height:38px; border-radius:var(--radius-sm);
+      background:var(--bg-secondary); border:1px solid var(--border);
+      font-size:0.8rem; font-weight:700; transition:all var(--transition-fast);
+      text-decoration:none; color:var(--text-secondary);
+    }
+    .cp-social-link:hover { border-color:var(--primary); color:var(--primary-light); background:rgba(124,58,237,0.1); }
+    .cp-similar { display:flex; flex-direction:column; gap:0.25rem; }
+    .cp-similar-item {
+      display:flex; align-items:center; gap:0.75rem; padding:0.6rem 0.75rem;
+      border-radius:var(--radius-sm); transition:background var(--transition-fast);
+      text-decoration:none; color:var(--text-primary); font-size:0.9rem;
+    }
+    .cp-similar-item:hover { background:var(--bg-tertiary); }
+    .cp-similar-logo {
+      width:36px; height:36px; border-radius:var(--radius-sm);
+      background:var(--bg-secondary); border:1px solid var(--border);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden; flex-shrink:0;
+    }
+    .cp-similar-logo img { width:100%; height:100%; object-fit:contain; padding:4px; }
+    .cp-similar-logo span { font-weight:700; font-size:0.8rem; }
+    .cp-similar-info small { display:block; color:var(--text-muted); font-size:0.75rem; }
+    @media (max-width:768px) {
+      .cp-grid { grid-template-columns:1fr; }
+      .cp-hero-inner { flex-direction:column; align-items:flex-start; }
+    }
+  </style>
 </head>
 <body data-page="company">
   <header class="header">
     <div class="header-inner">
-      <a href="index.html" class="logo"><div class="logo-icon">N</div><span>Niks Jobs</span></a>
+      <a href="index.html" class="logo"><div class="logo-icon">F</div><span>Fresha Jobs</span></a>
       <nav class="nav">
         <ul class="nav-links">
           <li><a href="jobs.html">Jobs</a></li>
@@ -30,80 +114,106 @@
     </div>
   </header>
 
-  <section class="company-hero">
-    <div class="container company-hero-content reveal">
-      <div class="avatar company-logo-large" id="company-logo">G</div>
-      <div>
-        <h1 id="company-name">Google</h1>
-        <p id="company-industry" style="color:var(--primary-light);margin:0.25rem 0">Technology</p>
-        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;font-size:0.9375rem;color:var(--text-secondary)">
-          <span>👥 <span id="company-employees">150,000+</span> employees</span>
-          <span>📍 <span id="company-location">Mountain View, CA</span></span>
-          <span>🌐 <a href="#" style="color:var(--accent)">Website</a></span>
+  <section class="cp-hero">
+    <div class="container">
+      <div class="cp-hero-inner reveal">
+        <div class="cp-logo-wrap" id="cp-logo-wrap">
+          <span class="cp-logo-fallback" id="cp-logo-fallback">G</span>
         </div>
-        <div style="margin-top:1.5rem;display:flex;gap:0.75rem">
-          <a href="jobs.html" class="btn btn-primary">View Open Jobs</a>
-          <button class="btn btn-outline">Follow Company</button>
+        <div class="cp-meta">
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap">
+            <h1 id="cp-name">Google</h1>
+            <span id="cp-hiring-badge" class="badge badge-success" style="display:none">Hiring Now</span>
+          </div>
+          <p id="cp-tagline" style="color:var(--text-secondary);margin:0.25rem 0 0;font-size:1rem"></p>
+          <div class="cp-meta-row">
+            <span>🏭 <span id="cp-industry">Technology</span></span>
+            <span>📍 <span id="cp-location">Mountain View, CA</span></span>
+            <span>👥 <span id="cp-employees">150,000+</span> employees</span>
+            <span>📅 Founded <span id="cp-founded">1998</span></span>
+            <span>💹 <span id="cp-type">Public</span></span>
+            <span>💰 Revenue <span id="cp-revenue">$307B</span></span>
+          </div>
+          <div style="display:flex;gap:0.75rem;margin-top:1.25rem;flex-wrap:wrap">
+            <a href="jobs.html" class="btn btn-primary btn-sm" id="cp-jobs-btn">View Open Jobs</a>
+            <a href="#" class="btn btn-outline btn-sm" id="cp-website-link" target="_blank" rel="noopener">🌐 Website</a>
+            <button class="btn btn-ghost btn-sm" id="cp-follow-btn">+ Follow</button>
+          </div>
         </div>
       </div>
+      <nav class="cp-tabs" role="tablist">
+        <button class="cp-tab active" data-tab="overview" role="tab">Overview</button>
+        <button class="cp-tab" data-tab="jobs" role="tab">Open Positions <span id="cp-jobs-count" class="badge badge-sm" style="margin-left:4px"></span></button>
+        <button class="cp-tab" data-tab="culture" role="tab">Culture</button>
+        <button class="cp-tab" data-tab="benefits" role="tab">Benefits</button>
+      </nav>
     </div>
   </section>
 
-  <main class="container" style="padding:3rem 1.5rem">
-    <div style="display:grid;grid-template-columns:2fr 1fr;gap:2rem">
+  <main class="container cp-body">
+    <div class="cp-grid">
       <div>
-        <section class="card reveal" style="margin-bottom:2rem">
-          <h2 style="margin-bottom:1rem">About</h2>
-          <p id="company-about"></p>
-        </section>
+        <div class="cp-tab-panel" id="tab-overview">
+          <section class="card cp-section reveal">
+            <h2>About</h2>
+            <p id="cp-about" style="line-height:1.75;color:var(--text-secondary)"></p>
+          </section>
+          <section class="card cp-section reveal">
+            <h2>Rating &amp; Reviews</h2>
+            <div class="cp-rating-bar">
+              <span class="cp-rating-num" id="cp-rating">4.8</span>
+              <div>
+                <div class="cp-stars" id="cp-stars">★★★★★</div>
+                <div class="cp-reviews-count"><span id="cp-reviews">12,400</span> employee reviews</div>
+              </div>
+            </div>
+          </section>
+          <section class="card cp-section reveal">
+            <h2>Tech Stack</h2>
+            <div class="tech-tags" id="cp-tech-stack"></div>
+          </section>
+        </div>
 
-        <section class="reveal" style="margin-bottom:2rem">
-          <h2 style="margin-bottom:1rem">Company Culture</h2>
-          <div class="company-gallery">
-            <div class="gallery-item">Office Space</div>
-            <div class="gallery-item">Team Events</div>
-            <div class="gallery-item">Work Culture</div>
-            <div class="gallery-item">Benefits</div>
-          </div>
-        </section>
+        <div class="cp-tab-panel" id="tab-jobs" style="display:none">
+          <section class="cp-section reveal">
+            <div class="jobs-grid grid-view" id="cp-jobs-list"></div>
+          </section>
+        </div>
 
-        <section class="reveal">
-          <h2 style="margin-bottom:1.5rem">Open Positions</h2>
-          <div class="jobs-grid grid-view" id="company-jobs"></div>
-        </section>
+        <div class="cp-tab-panel" id="tab-culture" style="display:none">
+          <section class="card cp-section reveal">
+            <h2>Culture &amp; Values</h2>
+            <p id="cp-culture" style="line-height:1.75;color:var(--text-secondary)"></p>
+          </section>
+        </div>
+
+        <div class="cp-tab-panel" id="tab-benefits" style="display:none">
+          <section class="card cp-section reveal">
+            <h2>Benefits &amp; Perks</h2>
+            <div class="benefits-grid" id="cp-benefits"></div>
+          </section>
+        </div>
       </div>
 
       <aside>
         <div class="card reveal" style="margin-bottom:1.5rem">
-          <h3 style="margin-bottom:1rem">Quick Info</h3>
-          <ul style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.9375rem">
-            <li><strong>Industry:</strong> <span id="company-industry-side">Technology</span></li>
-            <li><strong>Size:</strong> <span id="company-size">Enterprise</span></li>
-            <li><strong>Founded:</strong> 1998</li>
-            <li><strong>Headquarters:</strong> Mountain View, CA</li>
+          <h3 style="margin-bottom:1rem;font-size:1rem">Company Info</h3>
+          <ul class="cp-info-list">
+            <li><span>Industry</span><span id="si-industry">—</span></li>
+            <li><span>Company size</span><span id="si-size">—</span></li>
+            <li><span>Founded</span><span id="si-founded">—</span></li>
+            <li><span>Type</span><span id="si-type">—</span></li>
+            <li><span>Revenue</span><span id="si-revenue">—</span></li>
+            <li><span>Headquarters</span><span id="si-location">—</span></li>
           </ul>
         </div>
-        <div class="card reveal">
-          <h3 style="margin-bottom:1rem">Connect</h3>
-          <div class="footer-social">
-            <a href="#">in</a>
-            <a href="#">𝕏</a>
-            <a href="#">f</a>
-          </div>
+        <div class="card reveal" style="margin-bottom:1.5rem">
+          <h3 style="margin-bottom:0.75rem;font-size:1rem">Connect</h3>
+          <div class="cp-social-links" id="cp-social-links"></div>
         </div>
-        <div class="card reveal" style="margin-top:1.5rem">
-          <h3 style="margin-bottom:1rem">Featured Companies</h3>
-          <div style="display:flex;flex-direction:column;gap:0.75rem">
-            <a href="company.html?id=c2" style="display:flex;align-items:center;gap:0.75rem;padding:0.5rem;border-radius:var(--radius-sm);transition:background 0.2s" onmouseover="this.style.background='var(--bg-tertiary)'" onmouseout="this.style.background='transparent'">
-              <div class="avatar avatar-sm" style="background:#00A4EF20;color:#00A4EF">M</div> Microsoft
-            </a>
-            <a href="company.html?id=c3" style="display:flex;align-items:center;gap:0.75rem;padding:0.5rem" onmouseover="this.style.background='var(--bg-tertiary)'" onmouseout="this.style.background='transparent'">
-              <div class="avatar avatar-sm" style="background:#FF990020;color:#FF9900">A</div> Amazon
-            </a>
-            <a href="company.html?id=c4" style="display:flex;align-items:center;gap:0.75rem;padding:0.5rem" onmouseover="this.style.background='var(--bg-tertiary)'" onmouseout="this.style.background='transparent'">
-              <div class="avatar avatar-sm" style="background:#0668E120;color:#0668E1">F</div> Meta
-            </a>
-          </div>
+        <div class="card reveal">
+          <h3 style="margin-bottom:1rem;font-size:1rem">Similar Companies</h3>
+          <div class="cp-similar" id="cp-similar"></div>
         </div>
       </aside>
     </div>
@@ -112,7 +222,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-bottom" style="border:none;padding:0">
-        <p>&copy; 2026 Niks Jobs</p>
+        <p>&copy; 2026 Fresha Jobs</p>
         <a href="index.html">Back to Home</a>
       </div>
     </div>

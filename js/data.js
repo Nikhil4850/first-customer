@@ -1,4 +1,4 @@
-const NiksJobsData = {
+﻿const FreshaJobsData = {
   platformStats: {
     jobs: 28400,
     companies: 4200,
@@ -39,22 +39,214 @@ const NiksJobsData = {
   ],
 
   companies: [
-    { id: 'c1', name: 'Google', logo: 'G', color: '#4285F4', industry: 'Technology', employees: '150,000+', website: 'https://google.com', about: 'Google\'s mission is to organize the world\'s information and make it universally accessible and useful.', location: 'Mountain View, CA' },
-    { id: 'c2', name: 'Microsoft', logo: 'M', color: '#00A4EF', industry: 'Technology', employees: '220,000+', website: 'https://microsoft.com', about: 'Microsoft enables digital transformation for the era of an intelligent cloud and an intelligent edge.', location: 'Redmond, WA' },
-    { id: 'c3', name: 'Amazon', logo: 'A', color: '#FF9900', industry: 'E-commerce', employees: '1,500,000+', website: 'https://amazon.com', about: 'Amazon is guided by four principles: customer obsession, passion for invention, commitment to operational excellence, and long-term thinking.', location: 'Seattle, WA' },
-    { id: 'c4', name: 'Meta', logo: 'F', color: '#0668E1', industry: 'Social Media', employees: '86,000+', website: 'https://meta.com', about: 'Meta builds technologies that help people connect, find communities, and grow businesses.', location: 'Menlo Park, CA' },
-    { id: 'c5', name: 'Netflix', logo: 'N', color: '#E50914', industry: 'Entertainment', employees: '12,000+', website: 'https://netflix.com', about: 'Netflix is the world\'s leading streaming entertainment service.', location: 'Los Gatos, CA' },
-    { id: 'c6', name: 'Stripe', logo: 'S', color: '#635BFF', industry: 'Fintech', employees: '8,000+', website: 'https://stripe.com', about: 'Stripe is a financial infrastructure platform for businesses.', location: 'San Francisco, CA' },
-    { id: 'c7', name: 'Spotify', logo: '♪', color: '#1DB954', industry: 'Music', employees: '9,000+', website: 'https://spotify.com', about: 'Spotify transformed music listening forever when we launched in 2008.', location: 'Stockholm, Sweden' },
-    { id: 'c8', name: 'Airbnb', logo: '⌂', color: '#FF5A5F', industry: 'Travel', employees: '6,000+', website: 'https://airbnb.com', about: 'Airbnb connects millions of people to unique travel experiences.', location: 'San Francisco, CA' },
-    { id: 'c9', name: 'Apple', logo: 'A', color: '#555555', industry: 'Technology', employees: '164,000+', website: 'https://apple.com', about: 'Apple designs consumer electronics, software, and online services known for innovation and design excellence.', location: 'Cupertino, CA' },
-    { id: 'c10', name: 'Tesla', logo: 'T', color: '#CC0000', industry: 'Automotive', employees: '140,000+', website: 'https://tesla.com', about: 'Tesla accelerates the world\'s transition to sustainable energy with electric vehicles and clean energy products.', location: 'Austin, TX' },
-    { id: 'c11', name: 'Adobe', logo: 'Ad', color: '#FF0000', industry: 'Software', employees: '29,000+', website: 'https://adobe.com', about: 'Adobe empowers everyone to create, deliver, and optimize digital experiences through creative and document solutions.', location: 'San Jose, CA' },
-    { id: 'c12', name: 'Salesforce', logo: 'Sf', color: '#00A1E0', industry: 'SaaS', employees: '72,000+', website: 'https://salesforce.com', about: 'Salesforce is the global leader in CRM, helping companies connect with customers in a whole new way.', location: 'San Francisco, CA' },
-    { id: 'c13', name: 'IBM', logo: 'IBM', color: '#054ADA', industry: 'Technology', employees: '280,000+', website: 'https://ibm.com', about: 'IBM provides hybrid cloud, AI, and consulting solutions to enterprises worldwide.', location: 'Armonk, NY' },
-    { id: 'c14', name: 'Deloitte', logo: 'D', color: '#86BC25', industry: 'Consulting', employees: '415,000+', website: 'https://deloitte.com', about: 'Deloitte delivers audit, consulting, tax, and advisory services to clients across industries globally.', location: 'London, UK' },
-    { id: 'c15', name: 'Uber', logo: 'U', color: '#000000', industry: 'Mobility', employees: '32,000+', website: 'https://uber.com', about: 'Uber reimagines the way the world moves for the better through ride-hailing, delivery, and freight.', location: 'San Francisco, CA' },
-    { id: 'c16', name: 'Shopify', logo: 'S', color: '#96BF48', industry: 'E-commerce', employees: '11,000+', website: 'https://shopify.com', about: 'Shopify powers millions of businesses with a complete commerce platform for online and retail sales.', location: 'Ottawa, Canada' }
+    {
+      id: 'c1', name: 'Google', logo: 'G',
+      logoUrl: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
+      color: '#4285F4', industry: 'Technology', employees: '150,000+',
+      website: 'https://google.com', location: 'Mountain View, CA',
+      founded: '1998', type: 'Public', revenue: '$307B',
+      about: 'Google\'s mission is to organize the world\'s information and make it universally accessible and useful. From Search and Maps to Cloud and AI, Google builds products used by over 4 billion people daily.',
+      culture: 'Data-driven, innovative, and open. Google fosters a culture of psychological safety, 20% time for passion projects, and a commitment to making technology work for everyone.',
+      benefits: ['Comprehensive health & dental', 'Free gourmet meals on campus', 'Generous parental leave', '401k matching', 'On-site fitness & wellness', 'Learning & development budget', 'Commuter benefits', 'Stock options (RSU)'],
+      techStack: ['Go', 'Python', 'C++', 'Java', 'Kubernetes', 'TensorFlow', 'BigQuery'],
+      social: { linkedin: 'https://linkedin.com/company/google', twitter: 'https://twitter.com/google', github: 'https://github.com/google' },
+      rating: 4.8, reviews: 12400, openJobs: 248
+    },
+    {
+      id: 'c2', name: 'Microsoft', logo: 'M',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/512px-Microsoft_logo.svg.png',
+      color: '#00A4EF', industry: 'Technology', employees: '220,000+',
+      website: 'https://microsoft.com', location: 'Redmond, WA',
+      founded: '1975', type: 'Public', revenue: '$211B',
+      about: 'Microsoft enables digital transformation for the era of an intelligent cloud and an intelligent edge. With Azure, Microsoft 365, and Xbox, Microsoft empowers every person and organization on the planet to achieve more.',
+      culture: 'Growth mindset is at the heart of Microsoft\'s culture. Under Satya Nadella\'s leadership, the company shifted to collaboration, continuous learning, and inclusive design.',
+      benefits: ['Premium health insurance', 'Hybrid work flexibility', 'Free Microsoft products', 'Education reimbursement', 'Employee stock purchase plan', 'Generous PTO', 'Mental health support', 'Global mobility programs'],
+      techStack: ['C#', '.NET', 'Azure', 'TypeScript', 'Rust', 'Python', 'Kubernetes'],
+      social: { linkedin: 'https://linkedin.com/company/microsoft', twitter: 'https://twitter.com/microsoft', github: 'https://github.com/microsoft' },
+      rating: 4.7, reviews: 9800, openJobs: 312
+    },
+    {
+      id: 'c3', name: 'Amazon', logo: 'A',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png',
+      color: '#FF9900', industry: 'E-commerce & Cloud', employees: '1,500,000+',
+      website: 'https://amazon.com', location: 'Seattle, WA',
+      founded: '1994', type: 'Public', revenue: '$514B',
+      about: 'Amazon is guided by four principles: customer obsession, passion for invention, commitment to operational excellence, and long-term thinking. AWS powers millions of businesses; Prime serves hundreds of millions of customers.',
+      culture: 'Amazon\'s 16 Leadership Principles define its culture — from "Customer Obsession" to "Bias for Action." It\'s a high-bar, fast-paced environment that values ownership and deep thinking.',
+      benefits: ['Comprehensive health coverage', 'Amazon employee discounts', 'Restricted stock units', 'Parental leave', 'Career choice program', '401k with match', 'On-site amenities', 'Relocation assistance'],
+      techStack: ['Java', 'Python', 'AWS', 'DynamoDB', 'React', 'Node.js', 'Kotlin'],
+      social: { linkedin: 'https://linkedin.com/company/amazon', twitter: 'https://twitter.com/amazon', github: 'https://github.com/aws' },
+      rating: 4.5, reviews: 18200, openJobs: 456
+    },
+    {
+      id: 'c4', name: 'Meta', logo: 'M',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/800px-Meta_Platforms_Inc._logo.svg.png',
+      color: '#0668E1', industry: 'Social Media & VR', employees: '86,000+',
+      website: 'https://meta.com', location: 'Menlo Park, CA',
+      founded: '2004', type: 'Public', revenue: '$134B',
+      about: 'Meta builds technologies that help people connect, find communities, and grow businesses. Beyond Facebook and Instagram, Meta is investing heavily in the metaverse and next-gen AR/VR platforms.',
+      culture: 'Move fast, be bold, and focus on long-term impact. Meta encourages open feedback, bottom-up ideas, and gives engineers significant autonomy over large-scale systems.',
+      benefits: ['Top-tier health & wellness', 'Free on-site meals', 'Meta Quest headset', 'Remote work options', 'Fertility & family planning', 'High RSU compensation', 'Fitness reimbursement', 'Generous bonus structure'],
+      techStack: ['React', 'Hack/PHP', 'Python', 'C++', 'PyTorch', 'Cassandra', 'GraphQL'],
+      social: { linkedin: 'https://linkedin.com/company/meta', twitter: 'https://twitter.com/meta', github: 'https://github.com/facebook' },
+      rating: 4.4, reviews: 7600, openJobs: 189
+    },
+    {
+      id: 'c5', name: 'Netflix', logo: 'N',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1024px-Netflix_2015_logo.svg.png',
+      color: '#E50914', industry: 'Streaming & Entertainment', employees: '12,000+',
+      website: 'https://netflix.com', location: 'Los Gatos, CA',
+      founded: '1997', type: 'Public', revenue: '$33B',
+      about: 'Netflix is the world\'s leading streaming entertainment service with over 260 million paid memberships in 190+ countries. Netflix produces award-winning originals and licenses content across all genres.',
+      culture: 'Netflix operates on radical candor and a "freedom and responsibility" model. There are no vacation limits, minimal process, and a culture deck that became a Silicon Valley legend.',
+      benefits: ['Unlimited PTO', 'Top-of-market salary', 'Full health coverage', 'No vacation tracking', 'Home office stipend', 'Stock options', 'Parental leave', 'Relocation support'],
+      techStack: ['Java', 'Python', 'Node.js', 'React', 'AWS', 'Kafka', 'Cassandra'],
+      social: { linkedin: 'https://linkedin.com/company/netflix', twitter: 'https://twitter.com/netflix', github: 'https://github.com/netflix' },
+      rating: 4.6, reviews: 4200, openJobs: 94
+    },
+    {
+      id: 'c6', name: 'Stripe', logo: 'S',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/1024px-Stripe_Logo%2C_revised_2016.svg.png',
+      color: '#635BFF', industry: 'Fintech', employees: '8,000+',
+      website: 'https://stripe.com', location: 'San Francisco, CA',
+      founded: '2010', type: 'Private', revenue: '$14B+',
+      about: 'Stripe is a financial infrastructure platform for businesses of all sizes. Millions of companies use Stripe to accept payments, send payouts, and automate financial processes worldwide.',
+      culture: 'Stripe has a writing-heavy culture with a strong emphasis on clear thinking and long-term impact. Engineers are given real ownership and encouraged to question assumptions.',
+      benefits: ['Above-market equity', 'Comprehensive benefits', 'Remote-first options', 'Learning stipend', 'Books & conference budget', 'Home office setup', 'Parental leave', 'Health & dental'],
+      techStack: ['Ruby', 'Go', 'JavaScript', 'Java', 'PostgreSQL', 'Redis', 'AWS'],
+      social: { linkedin: 'https://linkedin.com/company/stripe', twitter: 'https://twitter.com/stripe', github: 'https://github.com/stripe' },
+      rating: 4.9, reviews: 2100, openJobs: 127
+    },
+    {
+      id: 'c7', name: 'Spotify', logo: '♪',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Spotify_logo_with_text.svg/1024px-Spotify_logo_with_text.svg.png',
+      color: '#1DB954', industry: 'Music & Audio', employees: '9,000+',
+      website: 'https://spotify.com', location: 'Stockholm, Sweden',
+      founded: '2006', type: 'Public', revenue: '$13.9B',
+      about: 'Spotify transformed music listening forever when launched in 2008. With 600M+ users and 240M+ subscribers, Spotify is the world\'s largest audio streaming platform offering music, podcasts, and audiobooks.',
+      culture: 'Spotify\'s Squad model is famous in tech: small autonomous teams (Squads) aligned by mission, organized into Tribes, Chapters, and Guilds. It emphasizes autonomy, accountability, and alignment.',
+      benefits: ['Flexible remote work', 'Spotify Premium for life', 'Health insurance', 'Parental leave', 'Learning & development', 'Equity compensation', 'Wellness allowance', 'Volunteer days'],
+      techStack: ['Python', 'Java', 'Scala', 'React', 'GCP', 'Kafka', 'PostgreSQL'],
+      social: { linkedin: 'https://linkedin.com/company/spotify', twitter: 'https://twitter.com/spotify', github: 'https://github.com/spotify' },
+      rating: 4.5, reviews: 3400, openJobs: 78
+    },
+    {
+      id: 'c8', name: 'Airbnb', logo: '⌂',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1024px-Airbnb_Logo_B%C3%A9lo.svg.png',
+      color: '#FF5A5F', industry: 'Travel & Hospitality', employees: '6,000+',
+      website: 'https://airbnb.com', location: 'San Francisco, CA',
+      founded: '2008', type: 'Public', revenue: '$9.9B',
+      about: 'Airbnb connects millions of hosts and guests in 220+ countries, offering unique stays and experiences. Their platform has facilitated over 1.5 billion guest arrivals worldwide.',
+      culture: 'Airbnb\'s culture centers on belonging. Employees are called "Airfam" and the company emphasizes design thinking, empathy for users, and community over pure growth.',
+      benefits: ['Travel credits', 'Remote work flexibility', 'Health & dental', 'Equity & bonuses', 'Parental leave', 'Volunteer time off', 'Learning reimbursement', '$500/mo remote stipend'],
+      techStack: ['Ruby on Rails', 'React', 'Java', 'Python', 'AWS', 'MySQL', 'GraphQL'],
+      social: { linkedin: 'https://linkedin.com/company/airbnb', twitter: 'https://twitter.com/airbnb', github: 'https://github.com/airbnb' },
+      rating: 4.6, reviews: 5100, openJobs: 112
+    },
+    {
+      id: 'c9', name: 'Apple', logo: '🍎',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/505px-Apple_logo_black.svg.png',
+      color: '#555555', industry: 'Technology & Consumer Electronics', employees: '164,000+',
+      website: 'https://apple.com', location: 'Cupertino, CA',
+      founded: '1976', type: 'Public', revenue: '$383B',
+      about: 'Apple designs consumer electronics, software, and services known for innovation and design excellence. From iPhone and Mac to Apple Silicon and Vision Pro, Apple builds the world\'s most loved technology.',
+      culture: 'Apple\'s culture is built on secrecy, craft, and obsessive attention to detail. Teams work in focused isolation to ship polished products. The bar for quality is famously high.',
+      benefits: ['Top-tier health coverage', 'Employee stock purchase plan', 'Product discounts', 'On-campus fitness', 'Generous 401k', 'Paid leave', 'Tuition reimbursement', 'Transit benefits'],
+      techStack: ['Swift', 'Objective-C', 'C', 'C++', 'Metal', 'LLVM', 'Xcode'],
+      social: { linkedin: 'https://linkedin.com/company/apple', twitter: 'https://twitter.com/apple', github: 'https://github.com/apple' },
+      rating: 4.7, reviews: 8900, openJobs: 203
+    },
+    {
+      id: 'c10', name: 'Tesla', logo: 'T',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/512px-Tesla_Motors.svg.png',
+      color: '#CC0000', industry: 'Automotive & Clean Energy', employees: '140,000+',
+      website: 'https://tesla.com', location: 'Austin, TX',
+      founded: '2003', type: 'Public', revenue: '$97B',
+      about: 'Tesla accelerates the world\'s transition to sustainable energy with electric vehicles, energy storage, and solar products. Tesla\'s Gigafactories and Autopilot technology are reshaping transportation.',
+      culture: 'Tesla runs at an intense pace. Elon Musk\'s "first principles" thinking drives innovation from the ground up. It attracts mission-driven engineers who want to solve hard problems fast.',
+      benefits: ['Stock options (RSU)', 'Health & dental', 'Discounted EV purchase', 'Paid time off', '401k', 'Parental leave', 'Relocation assistance', 'On-site cafeteria'],
+      techStack: ['C++', 'Python', 'CUDA', 'PyTorch', 'ROS', 'MATLAB', 'Embedded Linux'],
+      social: { linkedin: 'https://linkedin.com/company/tesla-motors', twitter: 'https://twitter.com/tesla', github: 'https://github.com/teslamotors' },
+      rating: 4.3, reviews: 6200, openJobs: 167
+    },
+    {
+      id: 'c11', name: 'Adobe', logo: 'Ad',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Adobe_Corporate_Logo.png/1024px-Adobe_Corporate_Logo.png',
+      color: '#FF0000', industry: 'Creative & Document Software', employees: '29,000+',
+      website: 'https://adobe.com', location: 'San Jose, CA',
+      founded: '1982', type: 'Public', revenue: '$19.4B',
+      about: 'Adobe empowers everyone to create, deliver, and optimize digital experiences. Creative Cloud, Document Cloud, and Experience Cloud serve over 30 million creative professionals worldwide.',
+      culture: 'Adobe\'s culture is built on creativity, inclusivity, and impact. The company invests heavily in employee wellbeing, innovation programs like Kickbox, and building a diverse workforce.',
+      benefits: ['Creative Cloud license', 'Sabbatical program', 'Flexible work', 'Health & wellness', 'Employee stock plan', 'Tuition assistance', 'Annual bonus', 'Parental leave'],
+      techStack: ['C++', 'JavaScript', 'React', 'Python', 'AWS', 'Machine Learning', 'WebAssembly'],
+      social: { linkedin: 'https://linkedin.com/company/adobe', twitter: 'https://twitter.com/adobe', github: 'https://github.com/adobe' },
+      rating: 4.6, reviews: 4800, openJobs: 145
+    },
+    {
+      id: 'c12', name: 'Salesforce', logo: 'Sf',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/1024px-Salesforce.com_logo.svg.png',
+      color: '#00A1E0', industry: 'SaaS & CRM', employees: '72,000+',
+      website: 'https://salesforce.com', location: 'San Francisco, CA',
+      founded: '1999', type: 'Public', revenue: '$34.9B',
+      about: 'Salesforce is the global leader in CRM, helping companies connect with customers in a whole new way. The Customer 360 platform integrates sales, service, marketing, and commerce for millions of businesses.',
+      culture: 'Salesforce is known for its Ohana (family) culture, strong values around trust and equality, and consistent placement on Best Places to Work lists. Volunteerism (1-1-1 model) is core to its identity.',
+      benefits: ['Ohana wellness reimbursement', 'Volunteer days', 'Flexible work', 'Top health coverage', 'Equity grants', '401k match', 'Parental leave', 'Annual giving match'],
+      techStack: ['Apex', 'JavaScript', 'LWC', 'Java', 'Heroku', 'MuleSoft', 'Einstein AI'],
+      social: { linkedin: 'https://linkedin.com/company/salesforce', twitter: 'https://twitter.com/salesforce', github: 'https://github.com/salesforce' },
+      rating: 4.5, reviews: 7100, openJobs: 278
+    },
+    {
+      id: 'c13', name: 'IBM', logo: 'IBM',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1024px-IBM_logo.svg.png',
+      color: '#054ADA', industry: 'Technology & Consulting', employees: '280,000+',
+      website: 'https://ibm.com', location: 'Armonk, NY',
+      founded: '1911', type: 'Public', revenue: '$61.9B',
+      about: 'IBM provides hybrid cloud, AI, and consulting solutions to enterprises worldwide. IBM Research is one of the world\'s most prolific research organizations, pioneering quantum computing, AI, and semiconductors.',
+      culture: 'IBM has a long heritage of innovation and has reinvented itself multiple times. Today\'s IBM values continuous learning, inclusivity, and using technology as a force for good.',
+      benefits: ['Health & life insurance', 'Pension plan', 'Flexible work hours', 'Learning subscriptions', 'Employee stock plan', 'Parental leave', 'Sabbatical', 'Mentorship programs'],
+      techStack: ['Java', 'Python', 'Go', 'Qiskit', 'OpenShift', 'Db2', 'COBOL'],
+      social: { linkedin: 'https://linkedin.com/company/ibm', twitter: 'https://twitter.com/ibm', github: 'https://github.com/ibm' },
+      rating: 4.4, reviews: 5600, openJobs: 198
+    },
+    {
+      id: 'c14', name: 'Deloitte', logo: 'D',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Deloitte.svg/1024px-Deloitte.svg.png',
+      color: '#86BC25', industry: 'Professional Services', employees: '415,000+',
+      website: 'https://deloitte.com', location: 'London, UK',
+      founded: '1845', type: 'Private', revenue: '$67.2B',
+      about: 'Deloitte delivers audit & assurance, consulting, tax, and advisory services to clients across industries globally. As one of the Big Four, Deloitte serves 90% of the Fortune 500.',
+      culture: 'Deloitte\'s culture emphasizes inclusion, wellbeing, and having a purpose beyond profit. The firm invests significantly in personal development, pro-bono work, and building future-ready skills.',
+      benefits: ['Performance bonuses', 'Flexible work', 'Health & wellness', 'CPA/MBA support', 'Global mobility', 'Mentoring programs', 'Gym reimbursement', 'Volunteer time'],
+      techStack: ['SAP', 'Salesforce', 'Azure', 'Power BI', 'Python', 'ServiceNow', 'Tableau'],
+      social: { linkedin: 'https://linkedin.com/company/deloitte', twitter: 'https://twitter.com/deloitte', github: 'https://github.com/deloittedigital' },
+      rating: 4.3, reviews: 9200, openJobs: 342
+    },
+    {
+      id: 'c15', name: 'Uber', logo: 'U',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Uber_logo_2018.svg/1024px-Uber_logo_2018.svg.png',
+      color: '#000000', industry: 'Mobility & Delivery', employees: '32,000+',
+      website: 'https://uber.com', location: 'San Francisco, CA',
+      founded: '2009', type: 'Public', revenue: '$37.3B',
+      about: 'Uber reimagines the way the world moves for the better through ride-hailing, food delivery (Uber Eats), and freight logistics. Operating in 70+ countries, Uber connects billions of trips annually.',
+      culture: 'Post-2017 cultural reset, Uber rebuilt itself around doing the right thing. Today\'s culture values inclusion, customer empathy, and bold but responsible innovation.',
+      benefits: ['Uber credits', 'Health & wellness', 'RSU grants', 'Flexible time off', 'Parental leave', '401k', 'Remote work options', 'Mental health support'],
+      techStack: ['Go', 'Python', 'Java', 'Node.js', 'Kafka', 'MySQL', 'Presto'],
+      social: { linkedin: 'https://linkedin.com/company/uber-com', twitter: 'https://twitter.com/uber', github: 'https://github.com/uber' },
+      rating: 4.2, reviews: 6800, openJobs: 156
+    },
+    {
+      id: 'c16', name: 'Shopify', logo: 'S',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopify_logo_2018.svg/1024px-Shopify_logo_2018.svg.png',
+      color: '#96BF48', industry: 'E-commerce Platform', employees: '11,000+',
+      website: 'https://shopify.com', location: 'Ottawa, Canada',
+      founded: '2006', type: 'Public', revenue: '$7.1B',
+      about: 'Shopify powers millions of businesses with a complete commerce platform for online and retail sales. Shopify merchants have collectively generated over $800B in economic activity worldwide.',
+      culture: 'Shopify is remote-first and values craftspeople who care deeply about their work. The culture celebrates builders, encourages experimentation, and operates with minimal meetings.',
+      benefits: ['Remote-first work', 'Annual growth budget', 'Health & wellness', 'Stock options', 'Home office stipend', 'Parental leave', 'Career coaching', 'Flex time'],
+      techStack: ['Ruby on Rails', 'React', 'GraphQL', 'Go', 'MySQL', 'Redis', 'Kubernetes'],
+      social: { linkedin: 'https://linkedin.com/company/shopify', twitter: 'https://twitter.com/shopify', github: 'https://github.com/shopify' },
+      rating: 4.7, reviews: 2900, openJobs: 134
+    }
   ],
 
   categories: [
@@ -151,11 +343,11 @@ const NiksJobsData = {
   ],
 
   testimonials: [
-    { id: 1, text: 'Niks Jobs helped me land my dream role at a FAANG company within 3 weeks. The platform is incredibly intuitive!', author: 'Sarah Chen', role: 'Software Engineer at Google', avatar: 'SC' },
+    { id: 1, text: 'Fresha Jobs helped me land my dream role at a FAANG company within 3 weeks. The platform is incredibly intuitive!', author: 'Sarah Chen', role: 'Software Engineer at Google', avatar: 'SC' },
     { id: 2, text: 'As a recruiter, this is the best job portal I\'ve used. Quality candidates and powerful filtering tools.', author: 'Michael Rodriguez', role: 'HR Director at Stripe', avatar: 'MR' },
     { id: 3, text: 'The application tracking and notifications kept me organized throughout my job search journey.', author: 'Priya Sharma', role: 'Product Manager at Spotify', avatar: 'PS' },
     { id: 4, text: 'I found a remote role that matched my skills perfectly. The salary filters and company reviews saved me hours.', author: 'Daniel Okonkwo', role: 'DevOps Lead at Netflix', avatar: 'DO' },
-    { id: 5, text: 'Switched careers from finance to product design thanks to the curated listings and career resources on Niks Jobs.', author: 'Elena Vasquez', role: 'Product Designer at Adobe', avatar: 'EV' },
+    { id: 5, text: 'Switched careers from finance to product design thanks to the curated listings and career resources on Fresha Jobs.', author: 'Elena Vasquez', role: 'Product Designer at Adobe', avatar: 'EV' },
     { id: 6, text: 'Our startup filled three engineering roles in under a month. Applicant quality was outstanding.', author: 'Ryan Mitchell', role: 'CTO at TechVentures', avatar: 'RM' },
     { id: 7, text: 'The interview scheduler and real-time alerts made coordinating with recruiters effortless.', author: 'Aisha Patel', role: 'Data Scientist at Amazon', avatar: 'AP' },
     { id: 8, text: 'Best job board for international opportunities. I relocated from India to Germany through a role I found here.', author: 'Vikram Singh', role: 'Cloud Architect at SAP', avatar: 'VS' }
@@ -228,9 +420,9 @@ const NiksJobsData = {
 };
 
 function getCompany(companyId) {
-  const fromMain = NiksJobsData.companies.find(c => c.id === companyId);
+  const fromMain = FreshaJobsData.companies.find(c => c.id === companyId);
   if (fromMain) return fromMain;
-  const fromFeatured = NiksJobsData.featuredCompanies.find(c => c.id === companyId);
+  const fromFeatured = FreshaJobsData.featuredCompanies.find(c => c.id === companyId);
   if (fromFeatured) {
     return { ...fromFeatured, employees: '—', website: '#', about: fromFeatured.tagline, location: '—' };
   }
@@ -243,5 +435,5 @@ function getJobWithCompany(job) {
 }
 
 function getAllJobsEnriched() {
-  return NiksJobsData.jobs.map(getJobWithCompany);
+  return FreshaJobsData.jobs.map(getJobWithCompany);
 }

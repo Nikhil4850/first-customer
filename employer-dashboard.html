@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employer Dashboard | Niks Jobs</title>
+  <title>Employer Dashboard | Fresha Jobs</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
@@ -17,7 +17,7 @@
 <body data-page="employer" data-protected="true">
   <header class="header">
     <div class="header-inner">
-      <a href="index.html" class="logo"><div class="logo-icon">N</div><span>Niks Jobs</span></a>
+      <a href="index.html" class="logo"><div class="logo-icon">F</div><span>Fresha Jobs</span></a>
       <nav class="nav">
         <ul class="nav-links">
           <li><a href="employer-dashboard.html" class="active">Employer</a></li>
@@ -169,7 +169,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const preview = document.getElementById('applicants-preview');
       if (preview) {
-        preview.innerHTML = NiksJobsData.applicants.slice(0, 6).map(a => `
+        preview.innerHTML = FreshaJobsData.applicants.slice(0, 6).map(a => `
           <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--border)">
             <div class="avatar avatar-sm">${a.avatar}</div>
             <div><strong>${a.name}</strong><p style="font-size:0.75rem;color:var(--text-muted)">${a.role}</p></div>

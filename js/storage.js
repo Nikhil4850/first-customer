@@ -1,55 +1,37 @@
-const Storage = {
+﻿const Storage = {
   KEYS: {
-    THEME: 'niksjobs_theme',
-    SAVED_JOBS: 'niksjobs_saved',
-    RECENT_JOBS: 'niksjobs_recent',
-    APPLICATIONS: 'niksjobs_applications',
-    SESSION: 'niksjobs_session',
-    USERS: 'niksjobs_users',
-    VIEWED_NOTIFICATIONS: 'niksjobs_notif_read'
+    THEME:                'freshajobs_theme',
+    SAVED_JOBS:           'freshajobs_saved',
+    RECENT_JOBS:          'freshajobs_recent',
+    APPLICATIONS:         'freshajobs_applications',
+    SESSION:              'freshajobs_session',
+    USERS:                'freshajobs_users',
+    VIEWED_NOTIFICATIONS: 'freshajobs_notif_read',
+    PROFILE:              'freshajobs_profile'
   },
 
   get(key, fallback = null) {
     try {
       const data = localStorage.getItem(key);
       return data ? JSON.parse(data) : fallback;
-    } catch {
-      return fallback;
-    }
+    } catch { return fallback; }
   },
 
   set(key, value) {
-    try {
-      localStorage.setItem(key, JSON.stringify(value));
-      return true;
-    } catch {
-      return false;
-    }
+    try { localStorage.setItem(key, JSON.stringify(value)); return true; }
+    catch { return false; }
   },
 
+  // ── Users & Auth ─────────────────────────────────────────────────────────
   initDemoUsers() {
-    const users = this.getUsers();
-    if (users.length > 0) return;
-
+    if (this.getUsers().length > 0) return;
     this.set(this.KEYS.USERS, [
-      {
-        name: 'Alex Johnson',
-        email: 'demo@niksjobs.com',
-        password: 'demo12345',
-        role: 'seeker'
-      },
-      {
-        name: 'Sarah Recruiter',
-        email: 'employer@niksjobs.com',
-        password: 'demo12345',
-        role: 'employer'
-      }
+      { name: 'Alex Johnson',    email: 'demo@freshajobs.com',     password: 'demo12345', role: 'seeker'   },
+      { name: 'Sarah Recruiter', email: 'employer@freshajobs.com', password: 'demo12345', role: 'employer' }
     ]);
   },
 
-  getUsers() {
-    return this.get(this.KEYS.USERS, []);
-  },
+  getUsers() { return this.get(this.KEYS.USERS, []); },
 
   findUserByEmail(email) {
     const normalized = email.trim().toLowerCase();
@@ -59,18 +41,10 @@ const Storage = {
   registerUser({ name, email, password, role }) {
     const users = this.getUsers();
     const normalized = email.trim().toLowerCase();
-
     if (users.some(u => u.email.toLowerCase() === normalized)) {
       return { error: 'An account with this email already exists. Please log in.' };
     }
-
-    const newUser = {
-      name: name.trim(),
-      email: normalized,
-      password,
-      role: role || 'seeker'
-    };
-
+    const newUser = { name: name.trim(), email: normalized, password, role: role || 'seeker' };
     users.push(newUser);
     this.set(this.KEYS.USERS, users);
     return { user: newUser };
@@ -83,41 +57,31 @@ const Storage = {
   },
 
   getSession() {
-    const session = this.get(this.KEYS.SESSION, null);
-    if (session && session.loggedIn) return session;
-    return null;
+    const s = this.get(this.KEYS.SESSION, null);
+    return (s && s.loggedIn) ? s : null;
   },
 
   setSession(user) {
     this.set(this.KEYS.SESSION, {
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      loggedIn: true,
-      loginAt: new Date().toISOString()
+      name: user.name, email: user.email, role: user.role,
+      loggedIn: true, loginAt: new Date().toISOString()
     });
   },
 
-  clearSession() {
-    localStorage.removeItem(this.KEYS.SESSION);
-  },
+  clearSession() { localStorage.removeItem(this.KEYS.SESSION); },
 
-  getSavedJobs() {
-    return this.get(this.KEYS.SAVED_JOBS, []);
-  },
+  // ── Jobs ─────────────────────────────────────────────────────────────────
+  getSavedJobs() { return this.get(this.KEYS.SAVED_JOBS, []); },
 
   toggleSavedJob(jobId) {
     const saved = this.getSavedJobs();
-    const index = saved.indexOf(jobId);
-    if (index > -1) saved.splice(index, 1);
-    else saved.push(jobId);
+    const idx = saved.indexOf(jobId);
+    if (idx > -1) saved.splice(idx, 1); else saved.push(jobId);
     this.set(this.KEYS.SAVED_JOBS, saved);
     return saved.includes(jobId);
   },
 
-  isJobSaved(jobId) {
-    return this.getSavedJobs().includes(jobId);
-  },
+  isJobSaved(jobId) { return this.getSavedJobs().includes(jobId); },
 
   addRecentJob(jobId) {
     let recent = this.get(this.KEYS.RECENT_JOBS, []);
@@ -127,9 +91,7 @@ const Storage = {
     return recent;
   },
 
-  getRecentJobs() {
-    return this.get(this.KEYS.RECENT_JOBS, []);
-  },
+  getRecentJobs() { return this.get(this.KEYS.RECENT_JOBS, []); },
 
   addApplication(application) {
     const apps = this.get(this.KEYS.APPLICATIONS, []);
@@ -143,17 +105,22 @@ const Storage = {
     return apps;
   },
 
-  getApplications() {
-    return this.get(this.KEYS.APPLICATIONS, []);
-  },
+  getApplications() { return this.get(this.KEYS.APPLICATIONS, []); },
 
+  // ── Profile ───────────────────────────────────────────────────────────────
+  saveProfile(profile) { this.set(this.KEYS.PROFILE, profile); },
+  loadProfile()        { return this.get(this.KEYS.PROFILE, null); },
+
+  // ── Notifications ─────────────────────────────────────────────────────────
   markNotificationsRead() {
-    const ids = NiksJobsData.notifications.map(n => n.id);
+    if (typeof FreshaJobsData === 'undefined') return;
+    const ids = FreshaJobsData.notifications.map(n => n.id);
     this.set(this.KEYS.VIEWED_NOTIFICATIONS, ids);
   },
 
   getUnreadCount() {
+    if (typeof FreshaJobsData === 'undefined') return 0;
     const read = this.get(this.KEYS.VIEWED_NOTIFICATIONS, []);
-    return NiksJobsData.notifications.filter(n => !read.includes(n.id) && n.unread).length;
+    return FreshaJobsData.notifications.filter(n => !read.includes(n.id) && n.unread).length;
   }
 };
